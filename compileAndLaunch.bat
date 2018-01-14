@@ -1,5 +1,6 @@
 @REM This handy script compiles Bally Astrocade assembly code and launches the resulting binary in MAME.
-@REM Edit line 5 below, put this .bat file alongside your .asm files, and run compileAndTest.bat in the Command Prompt. You must have zmac and MAME (with Astrocade support) already installed.
+@REM Edit line 6 below, put this .bat file alongside your .asm files, and run "./compileAndLaunch.bat yourasmfilename" (without the quotes). 
+@REM You must have zmac from Bally Alley and MAME (with Astrocade support) already installed.
 @REM hxlnt 2018
 
 @set mamepath="C:\Users\rache\Desktop\Astrocade dev\mame"
@@ -13,6 +14,6 @@
 @goto :eof
 
 :noargs
-@echo Pass in the filename of your .asm file without the .asm extension. Example: ./test.bat helloworld
+@echo Pass in the filename of your .asm file without the .asm extension. Example: ./compileAndLaunch.bat helloworld
 
 :eof
