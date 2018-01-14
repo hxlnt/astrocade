@@ -21,14 +21,14 @@ $PRGSTART:  DI
             DB $2C          ; Left/Right Color Boundary
             DB 00001000b    ; Set Bit 3 of INterrupt MODe
             DO (COLSET)
-            DW COLTAB       ; Color Table
+            DW $COLTAB      ; Color Table
             DO (MOVE)
             DW NORMEM       ; Destination
             DW 4000D        ; Bytes to move
-            DW BITMAP       ; Source Address
+            DW $BITMAP      ; Source Address
             EXIT
 
-$LOOP:      JP LOOP         ; Infinite loop
+$LOOP:      JP $LOOP        ; Infinite loop
 
 $COLTAB:    DB $44          ; Color 3 Left
             DB $88          ; Color 2 Left 
