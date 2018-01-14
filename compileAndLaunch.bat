@@ -1,16 +1,18 @@
-REM This handy script compiles Bally Astrocade assembly code and launches the resulting binary in MAME.
-REM Edit the lines as indicated below, put this .bat file alongside your .asm files, and run compileAndTest.bat in the Command Prompt. You must have zmac and MAME (with Astrocade support) already installed.
-REM hxlnt 2018
+@REM This handy script compiles Bally Astrocade assembly code and launches the resulting binary in MAME.
+@REM Edit line 5 below, put this .bat file alongside your .asm files, and run compileAndTest.bat in the Command Prompt. You must have zmac and MAME (with Astrocade support) already installed.
+@REM hxlnt 2018
 
-REM Line 7 uses zmac to compile game.asm to game.bin. You can change "game" to some other name--just be sure to do it throughout the script.
-REM Run this script inside the folder containing game.asm and ensure that zmac is on the path or in the same folder.
-zmac -o game.bin game.asm
+@set mamepath="C:\Users\rache\Desktop\Astrocade dev\mame"
 
-REM Line 11 copies game.bin into MAME's Astrocade ROMs folder. Edit this line with the correct path.
-REM The spelling of "astrocde" (without the 'a') is not a mistake--this follows MAME's folder naming convention. 
-copy game.bin "C:\your\path\to\mame\roms\astrocde\" 
+:parse
+@if "%1"=="" goto noargs
+@zmac -o %1.bin %1.asm
+@copy %1.bin "%mamepath:"=%\roms\astrocde"
+@cd %mamepath%
+@mame64.exe astrocde -cart "%mamepath:"=%\roms\astrocde\%1.bin"
+@goto :eof
 
-REM Lines 15 and 16 launch game.bin in MAME. Edit these lines with the correct path.
-REM You may also need to edit "mame64.exe" if your MAME .exe has a different name.
-cd "C:\your\path\to\mame\"
-mame64.exe astrocde -cart "C:\your\path\to\mame\roms\astrocde\game.bin"
+:noargs
+@echo Pass in the filename of your .asm file without the .asm extension. Example: ./test.bat helloworld
+
+:eof
