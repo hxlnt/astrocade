@@ -1,5 +1,4 @@
 ; Demo #1: Hello Worlds!
-; From the Astrocade zine "Meet Me at the Astrocade in the Long Arm of the Milky Way: A Guide to Writing Cute z80 Assembly Language Code for the Bally Astrocade Game Console while Navigating Love and the Deep Void of Space"
 ; 2018 hxlnt
 
 ; To assemble with zmac: zmac -o titledis.bin titledis.asm
