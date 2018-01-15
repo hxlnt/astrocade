@@ -2,12 +2,12 @@
 ;; Assemble with zmac 1.3: zmac -o helloworlds.bin helloworlds.asm
 ;; 2018 hxlnt
 INCLUDE "HVGLIB.H"
-            ORG    FIRSTC   ; Initialize memory address ($2000)
-            DB     "U"      ; Set up cartridge
-            DW     MENUST   ; Astrocade menu address
-            DW     PrgName  ; Address of title for program
-            DW     PrgStart ; Entry point if user selects title on menu screen
-PrgStart:   DI              ; Initialization
+            ORG    FIRSTC       ; Initialize memory address ($2000)
+            DB     "U"          ; Set up cartridge
+            DW     MENUST       ; Astrocade menu address
+            DW     PrgName      ; Address of title for program
+            DW     PrgStart     ; Entry point if user selects title on menu screen
+PrgStart:   DI                  ; Initialization
             SYSTEM (INTPC)
             DO     (SETOUT)
             DB     $B0       
