@@ -14,6 +14,6 @@
 @goto :eof
 
 :noargs
-@echo Pass in the filename of your .asm file without the .asm extension. Example: ./compileAndLaunch.bat helloworld
+@echo Pass in the filename of your .asm file without the .asm extension. Example: ./compileAndLaunch.bat 01-helloworlds
 
 :eof
