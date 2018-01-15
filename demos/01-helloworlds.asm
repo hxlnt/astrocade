@@ -1,7 +1,8 @@
-;; Demo 1: HELLO WORLDS
-;; Assemble with zmac 1.3: zmac -o helloworlds.bin helloworlds.asm
-;; 2018 hxlnt
+;; Demo 1: HELLO WORLDS / 2018 hxlnt
+;; Assemble with Zmac 1.3
+
 INCLUDE "HVGLIB.H"
+
             ORG    FIRSTC       ; Initialize memory address ($2000)
             DB     "U"          ; Set up cartridge
             DW     MENUST       ; Astrocade menu address
