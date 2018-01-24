@@ -28,8 +28,7 @@ To make games and software for the Bally Astrocade, grab the tools listed below.
 2. Your favorite IDE with Z80 syntax highlighting. I use [VS Code](http://code.visualstudio.com) for Windows, Mac, or Linux, which also has a built-in terminal pane for running your compilation and testing scripts.
 
 ### Creating graphics and sound
-Unfortunately, there aren't many tools to help you create your own graphics and audio for Bally Astrocade games. (That's one of the things I'm working on, actually!) In the meantime, there are some tools related to Astrocade image creation on the [AtariAge Astrocade forum]
-(http://atariage.com/forums/topic/251416-programming-the-bally-arcadeastrocade/) as well as in [this repo for a port of Nyan Cat to the Astrocade](https://github.com/zhuowei/Nyastrocat).
+Unfortunately, there aren't many tools to help you create your own graphics and audio for Bally Astrocade games. (That's one of the things I'm working on, actually!) In the meantime, there are some tools related to Astrocade image creation on the [AtariAge Astrocade forum](http://atariage.com/forums/topic/251416-programming-the-bally-arcadeastrocade/) as well as in [this repo for a port of Nyan Cat to the Astrocade](https://github.com/zhuowei/Nyastrocat).
 
 ### Assembling and testing code
 1. The Zmac assembler for [Windows](http://www.ballyalley.com/ml/ml_tools/Zmac13_win32.zip) or [Linux](http://www.ballyalley.com/ml/ml_tools/zmac-linux.zip) is used in many tutorials. If you choose a different Z80 assembler, do note that macros, input rules, and other assembler-specific features will differ and code examples will need to be modified accordinly.
