@@ -1,10 +1,12 @@
                                     ; Demo 1: HELLO, WORLDS! / 2018 hxlnt
+                                    ; Inspired by Adam Trionfo's Hello World
+                                    ; http://www.ballyalley.com/ml/ml_homebrew/helloworld/hello.asm
                                     ; Assemble with Zmac 1.3
 
 INCLUDE "HVGLIB.H"                  ; Include HVGLIB library
 
             ORG    FIRSTC           ; Initialize at beginning of cartridge ROM area
-            DB     "U"              ; ... with the code for a normal menued cartridge
+            DB     $55              ; ... with the code for a normal menued cartridge
             DW     MENUST           ; Initialize menu
             DW     PrgName          ; ... with string at PrgName
             DW     PrgStart         ; ... such that selecting the program enters PrgStart
