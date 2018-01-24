@@ -271,6 +271,7 @@ function fixColorBoundaryBufferZone(oledwidth, oledheight, loc, dir) {
             }
         }
     }
+}
 
 function setuppal1(){
     $("#left00").spectrum({
