@@ -1,0 +1,130 @@
+<!doctype HTML>
+
+<HEAD>
+    <SCRIPT src="https://hxlntblob.blob.core.windows.net/nbm/alterdark/js/jquery-3.2.1.min.js"></SCRIPT>
+    <SCRIPT src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></SCRIPT>
+    <LINK rel="stylesheet" href="https://hxlntblob.blob.core.windows.net/nbm/alterdark/css/spectrum.css" type="text/css" />
+    <style>
+            #screen,
+            #controls, h1 {
+                margin: 1.25vw;
+            }
+            h1 {
+                font-family: "Courier New", "Courier", Courier, monospace;
+                font-size: 20px;
+            }
+            #controls {
+                display: block;
+                width: 25vw;
+            }
+        
+            #screen {
+                background-color: black;
+                display: -ms-inline-flexbox;
+                display: -webkit-inline-flex;
+                display: inline-flex;
+                -webkit-flex-direction: row;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+                -webkit-justify-content: flex-start;
+                -ms-flex-pack: start;
+                justify-content: flex-start;
+                -webkit-align-content: flex-start;
+                -ms-flex-line-pack: start;
+                align-content: flex-start;
+                -webkit-align-items: flex-start;
+                -ms-flex-align: start;
+                align-items: flex-start;
+                width: 1204px;
+                height: 765px;
+            }
+            #boundarycontainer{
+                margin-left: calc(1.25vw - 2px);
+                
+                width: 1208px;
+                height: 10px;
+            }
+            .boundary {
+                width: 10px;
+                height: 1px;
+                
+                /* display: block; */
+            }
+            .boundary:before{
+                content: "|";
+            }
+            .pixel {
+                width: 7px;
+                height: 7px;
+                border: 0.25px solid #0e0e0e;
+                -webkit-order: 0;
+                -ms-flex-order: 0;
+                order: 0;
+                -webkit-flex: 1 1 auto;
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                -webkit-align-self: auto;
+                -ms-flex-item-align: auto;
+                align-self: auto;
+            }
+            .palette {
+                float: left;
+                padding: 10px;
+            }
+            #palettecontainer {
+                float: left;
+            }
+            #field {
+                width: 320px;
+                height: 204px;
+            }
+        </style>
+    <SCRIPT src="https://hxlntblob.blob.core.windows.net/nbm/alterdark/js/spectrum.js"></SCRIPT>
+</HEAD>
+
+<BODY>
+    <h1>AstroPaint<sup>💫</sup></h1>
+    <div id="boundarycontainer"></div>
+    <div id="screen"></div>
+    <div id="palettecontainer">
+        <div class="palette">
+            <p>Left palette | Right palette</p>
+            <input type="radio" name="palselect" value="00"></input>
+            <INPUT type="text" class="showPaletteOnly" id="left00" />
+            <INPUT type="text" class="showPaletteOnly" id="right00" />
+            <HR>
+            <input type="radio" name="palselect" value="01" checked></input>
+            <INPUT type="text" class="showPaletteOnly" id="left01" />
+            <INPUT type="text" class="showPaletteOnly" id="right01" />
+            <HR>
+            <input type="radio" name="palselect" value="02"></input>
+            <INPUT type="text" class="showPaletteOnly" id="left02" />
+            <INPUT type="text" class="showPaletteOnly" id="right02" />
+            <HR>
+            <input type="radio" name="palselect" value="03"></input>
+            <INPUT type="text" class="showPaletteOnly" id="left03" />
+            <INPUT type="text" class="showPaletteOnly" id="right03" />
+            <BR><BR>
+            <INPUT type="checkbox" id="boundarytoggle" checked="checked">Show color boundary
+            <p>Hint: Move color boundary with left and right arrow keys</p> 
+            <BR><BR>
+            <p><strong>UNIMPLEMENTED FEATURES:</strong></p>
+            <p>Screen mode:
+            <select id="oledsize">
+                <option value="lores">LO-RES</option>
+                <option value="hires">HI-RES</option>
+            </select></p>
+            <p>Upload .astropaint (Z-80 ASM): <input type="file" id="uploadjs" /></p>
+            <button id="download">Save .astropaint (Z-80 ASM)</button>
+        </div>
+    </div>
+
+    <!-- Not implemented yet -->
+    <!-- <script src="lib/file-saver/FileSaver.min.js"></script> -->
+    <script src="script.js"></script>
+</BODY>
+
+</HTML>
