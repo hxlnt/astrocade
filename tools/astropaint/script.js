@@ -237,7 +237,6 @@ function fixColorBoundaryBufferZone(oledwidth, oledheight, loc, dir) {
     }
     for (j = a; j < b; j++) {
         for (i = loc + j; i < oledheight * oledwidth; i = i + oledwidth) {
-            //console.log(i, $( ".pixel" ).eq( i )[0].className);
             if ($(".pixel").eq(i)[0].className == "pixel left00") {
                 $(".pixel").eq(i)[0].className = "pixel right00"
                 $($(".pixel").eq(i)[0]).css("background-color", currentRight00);
