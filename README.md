@@ -16,7 +16,7 @@ Let's make cute software for the Bally Astrocade!
 I'm teaching myself how to develop for the slightly-obscure Bally Astrocade, an 8-bit home computer/game console released in the late 1970s. The Astrocade boasts impressive (for its day) specs: a 1.7MHz Z80 8-bit CPU, 4KB RAM, 256 available colors, 3 square-wave audio channels, and 4 controller ports. If you want to learn alongside me, this repo will contain the demos I create as well as any tools I create to make my workflow easier and more fun. 
 
 ## What's in this repo
-- The `demos` folder contains my Astrocade assembly language experiments, complete with comments where applicable. They require `HVLIB.H` and the Zmac assembler. (See [Development toolchain](#development-toolchain) for more information.)
+- The `demos` folder contains my Astrocade assembly language experiments, complete with comments where applicable. They require `HVGLIB.H` and the Zmac assembler. (See [Development toolchain](#development-toolchain) for more information.)
 - The `tools` folder contains any tools or scripts I've created that may be of use for Astrocade software development. There's not much there now, but hopefully this will grow!
 
 ## Development toolchain
