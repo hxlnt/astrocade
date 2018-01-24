@@ -8,7 +8,8 @@ INCLUDE "HVGLIB.H"              ; Include HVGLIB library
             DW     MENUST       ; Initialize menu
             DW     PrgName      ; ... with string at PrgName
             DW     PrgStart     ; ... such that selecting the program enters PrgStart
-PrgName:    DB     "HELLO, WORLDS!", $00
+PrgName:    DB     "HELLO, WORLDS!"
+            DB     $00
 PrgStart:   DI                  ; Disable interrupts
             SYSTEM (INTPC)      ; Begin interpreter mode
             DO     (SETOUT)     ; Set output ports
@@ -19,11 +20,11 @@ PrgStart:   DI                  ; Disable interrupts
             DW     Palettes     ; ... with the values at Palettes
             DO     (FILL)       ; Set background fill
             DW     NORMEM       ; ... starting at the beginning of screen RAM
-            DW     10d*BYTEPL   ; ... and going for 16 lines
-            DB     00011011b    ; ... with a fill pattern of four different colored pixels
+            DW     100d*BYTEPL   ; ... and going for 100 lines
+            DB     00010010b    ; ... with a fill pattern of three different colored pixels
             DO     (STRDIS)     ; Set string display
             DB     0d           ; ... starting 0 pixels from the left of the screen
-            DB     37d          ; ... and 37 pixels from the top of the screen
+            DB     32d          ; ... and 32 pixels from the top of the screen
             DB     00001100b    ; ... with no enlargement, foreground color = 11, background color = 00          
             DW     PrgName      ; ... to show string at PrgName
             EXIT                ; Exit interpreter mode
