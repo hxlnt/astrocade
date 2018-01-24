@@ -27,12 +27,8 @@ To make games and software for the Bally Astrocade, grab the tools listed below.
 1. [HVGLIB.H](http://www.ballyalley.com/ml/ml_tools/HVGLIB.zip) is a Bally Astrocade library used in most tutorials and sample code. You'll typically include it at the top of your source code files by typing `INCLUDE HVGLIB.H` at the very top of your code.
 2. Your favorite IDE with Z80 syntax highlighting. I use [VS Code](http://code.visualstudio.com) for Windows, Mac, or Linux, which also has a built-in terminal pane for running your compilation and testing scripts.
 
-### Creating graphics and sound
-Unfortunately, there aren't many tools to help you create your own graphics and audio for Bally Astrocade games. (That's one of the things I'm working on, actually!) In the meantime, there are some tools related to Astrocade image creation on the [AtariAge Astrocade forum]
-(http://atariage.com/forums/topic/251416-programming-the-bally-arcadeastrocade/) as well as in [this repo for a port of Nyan Cat to the Astrocade](https://github.com/zhuowei/Nyastrocat).
-
 ### Assembling and testing code
-1. The Zmac assembler for [Windows](http://www.ballyalley.com/ml/ml_tools/Zmac13_win32.zip) or [Linux](http://www.ballyalley.com/ml/ml_tools/zmac-linux.zip) is used in many tutorials. If you choose a different Z80 assembler, do note that macros, input rules, and other assembler-specific features will differ and code examples will need to be modified accordinly.
+1. The Zmac assembler for [Windows](http://www.ballyalley.com/ml/ml_tools/Zmac13_win32.zip) or [Linux](http://www.ballyalley.com/ml/ml_tools/zmac-linux.zip) is used in many tutorials. If you choose a different Z80 assembler, do note that macros, input rules, and other assembler-specific features will differ and code examples will need to be modified accordingly.
 2. Once your code is successfully assembled into a binary file, you can test it in the Astrocade emulator inside [MAME](https://github.com/mamedev/mame/releases).
 3. Compiling and launching your code requires several sequential command-line processes. It's only four or five lines, but you won't want to type them again and again--and risk making errors--every time you want to test a new bit of your code. So, I recommend you grab the [tools/compileAndLaunch.bat script](https://github.com/hxlnt/astrocade-dev/blob/master/tools/compileAndLaunch.bat) in this repo. To assemble your code and launch the resulting ROM in MAME, simply place the script alongside your source code, edit a line in the script to point to your MAME installation, and run `compileAndLaunch.bat mycode` where `mycode` is the name of your .asm file without the file extension.
 
