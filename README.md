@@ -24,7 +24,7 @@ To make games and software for the Bally Astrocade, grab the tools listed below.
 
 ### Tools for writing code
 1. [HVGLIB.H](http://www.ballyalley.com/ml/ml_tools/HVGLIB.zip) is a Bally Astrocade library used in most tutorials and sample code. You'll typically include it at the top of your source code files by typing `INCLUDE HVGLIB.H` at the very top of your code.
-2. Your favorite IDE with Z80 syntax highlighting. I use [VS Code](http://code.visualstudio.com) for Windows, Mac, or Linux, which also has a built-in terminal pane for running your compilation and testing scripts. The Z80 extension I use is [Z80 Assembly](https://marketplace.visualstudio.com/items?itemName=Imanolea.z80-asm#overview), which isn't specific to Astrocade development and won't recognized HVGLIB.H content. But it's better than nothing. :)
+2. Your favorite IDE with Z80 syntax highlighting. I use [VS Code](http://code.visualstudio.com) for Windows, Mac, or Linux, which also has a built-in terminal pane for running your compilation and testing scripts. I use the [Z80 Assembly](https://marketplace.visualstudio.com/items?itemName=Imanolea.z80-asm#overview) syntax extension, which isn't specific to Astrocade development and won't recognize HVGLIB.H content. But it's better than nothing. :) The color theme is [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula).
 
 ![Screenshot of VS Code with Z80 syntax highlighting](etc/vscode.png)
 
