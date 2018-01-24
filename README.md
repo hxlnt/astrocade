@@ -7,7 +7,6 @@ Let's make cute software for the Bally Astrocade!
 - [What's in this repo](#whats-in-this-repo)
 - [Development toolchain](#development-toolchain)
     - Writing code
-    - Creating graphics and sound
     - Assembling and testing code
 - [Additional learning resources](#additional-learning-resources)
 
