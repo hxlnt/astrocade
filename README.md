@@ -11,7 +11,7 @@ Let's make cute software for the Bally Astrocade!
     - Assembling and testing code
 - [Additional learning resources](#additional-learning-resources)
 
-![Sketch depicting Bally Astrocade](bally.png)
+![Sketch depicting Bally Astrocade](etc/bally.png)
 
 ## Introduction
 I'm teaching myself how to develop for the slightly-obscure Bally Astrocade, an 8-bit home computer/game console released in 1977. The Astrocade boasts impressive (for its day) specs: a 1.7MHz Z80 8-bit CPU, 4KB RAM, 256 available colors, 3 square-wave audio channels, and 4 controller ports. If you want to learn alongside me, this repo will contain the demos I create as well as any tools I create to make my workflow easier and more fun. 
@@ -25,7 +25,9 @@ To make games and software for the Bally Astrocade, grab the tools listed below.
 
 ### Writing code
 1. [HVGLIB.H](http://www.ballyalley.com/ml/ml_tools/HVGLIB.zip) is a Bally Astrocade library used in most tutorials and sample code. You'll typically include it at the top of your source code files by typing `INCLUDE HVGLIB.H` at the very top of your code.
-2. Your favorite IDE with Z80 syntax highlighting. I use [VS Code](http://code.visualstudio.com) for Windows, Mac, or Linux, which also has a built-in terminal pane for running your compilation and testing scripts.
+2. Your favorite IDE with Z80 syntax highlighting. I use [VS Code](http://code.visualstudio.com) for Windows, Mac, or Linux, which also has a built-in terminal pane for running your compilation and testing scripts. The Z80 extension I use is [Z80 Assembly](https://marketplace.visualstudio.com/items?itemName=Imanolea.z80-asm#overview), which isn't specific to Astrocade development and won't recognized HVGLIB.H content. But it's better than nothing. :)
+
+![Screenshot of VS Code with Z80 syntax highlighting](etc/vscode.png)
 
 ### Assembling and testing code
 1. The Zmac assembler for [Windows](http://www.ballyalley.com/ml/ml_tools/Zmac13_win32.zip) or [Linux](http://www.ballyalley.com/ml/ml_tools/zmac-linux.zip) is used in many tutorials. If you choose a different Z80 assembler, do note that macros, input rules, and other assembler-specific features will differ and code examples will need to be modified accordingly.
