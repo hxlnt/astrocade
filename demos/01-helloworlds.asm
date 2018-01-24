@@ -1,5 +1,5 @@
-;; Demo 1: HELLO WORLDS / 2018 hxlnt
-;; Assemble with Zmac 1.3
+                                ; Demo 1: HELLO, WORLDS! / 2018 hxlnt
+                                ; Assemble with Zmac 1.3
 
 INCLUDE "HVGLIB.H"              ; Include HVGLIB library
 
@@ -8,6 +8,7 @@ INCLUDE "HVGLIB.H"              ; Include HVGLIB library
             DW     MENUST       ; Initialize menu
             DW     PrgName      ; ... with string at PrgName
             DW     PrgStart     ; ... such that selecting the program enters PrgStart
+PrgName:    DB     "HELLO, WORLDS!", $00
 PrgStart:   DI                  ; Disable interrupts
             SYSTEM (INTPC)      ; Begin interpreter mode
             DO     (SETOUT)     ; Set output ports
@@ -21,19 +22,11 @@ PrgStart:   DI                  ; Disable interrupts
             DW     10d*BYTEPL   ; ... and going for 16 lines
             DB     00011011b    ; ... with a fill pattern of four different colored pixels
             DO     (STRDIS)     ; Set string display
-            DB     7d           ; ... starting 7 pixels from the left of the screen
+            DB     0d           ; ... starting 0 pixels from the left of the screen
             DB     37d          ; ... and 37 pixels from the top of the screen
             DB     00001100b    ; ... with no enlargement, foreground color = 11, background color = 00          
             DW     PrgName      ; ... to show string at PrgName
             EXIT                ; Exit interpreter mode
 Loop:       JP     Loop         ; Play infinite loop
-Palettes:   DB     $BF          ; Color palettes for left colors (11)
-            DB     $00          ; ... (10)
-            DB     $00          ; ... (01)
-            DB     $00          ; ... and (00)
-            DB     $E7          ; ... and right colors (11)
-            DB     $9A          ; ... (10)
-            DB     $39          ; ... (01)
-            DB     $19          ; ... and (00)
-PrgName:    DB     "HELLO, WORLDS!"
-            DB     $00          ; ... which must terminate with a 0
+Palettes:   DB     $BF, $00, $00, $00
+            DB     $E7, $9A, $39, $19
