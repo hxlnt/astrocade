@@ -78,8 +78,8 @@ let currentRight02 = astrocadePalette[0x4F];
 let currentRight03 = astrocadePalette[0x3F];
 let colorBoundaryPos = 81;
 let isBoundaryVisible = true;
-let oledwidth = 160;
-let oledheight = 102;
+let screenwidth = 160;
+let screenheight = 102;
 
 
 
@@ -93,7 +93,7 @@ $(".right02").css("background-color", currentRight02);
 $(".right03").css("background-color", currentRight03);
 
 // // Draw empty screen
-drawOLED(oledwidth, oledheight);
+drawAstrocadeScreen(screenwidth, screenheight);
 
 setuppal1();
 
@@ -103,7 +103,7 @@ $("input[name='palselect']").on("click", function () {
 
 $("input[id='boundarytoggle']").on("click", function () {
     isBoundaryVisible = $("input[id='boundarytoggle']")[0].checked;
-    redrawColorBoundary(oledwidth, oledheight, colorBoundaryPos, "none");
+    redrawColorBoundary(screenwidth, screenheight, colorBoundaryPos, "none");
 });
 
 // Click handler for turning on individual pixel
@@ -119,37 +119,39 @@ document.getElementById("screen").addEventListener("pointerover", function (e) {
 $("html").keyup(function (event) {
     if (event.which == 37) {
         event.preventDefault();
-        redrawColorBoundary(oledwidth, oledheight, colorBoundaryPos, "left");
-        fixColorBoundaryBufferZone(oledwidth, oledheight, colorBoundaryPos, "left")
+        redrawColorBoundary(screenwidth, screenheight, colorBoundaryPos, "left");
+        fixColorBoundaryBufferZone(screenwidth, screenheight, colorBoundaryPos, "left")
     }
     else if (event.which == 39) {
         event.preventDefault();
-        redrawColorBoundary(oledwidth, oledheight, colorBoundaryPos, "right");
-        fixColorBoundaryBufferZone(oledwidth, oledheight, colorBoundaryPos, "right")
+        redrawColorBoundary(screenwidth, screenheight, colorBoundaryPos, "right");
+        fixColorBoundaryBufferZone(screenwidth, screenheight, colorBoundaryPos, "right")
     }
 });
 
-function drawOLED(oledwidth, oledheight) {
-    for (i = 0; i < oledwidth * oledheight; i++) {
+function drawAstrocadeScreen(screenwidth, screenheight) {
+    for (i = 0; i < screenwidth * screenheight; i++) {
         let createpixel = document.createElement("div");
-        let row = Math.ceil(i / oledwidth);
-        if (Math.ceil(i % 160 == 0) || (colorBoundaryPos >= 160 - (oledwidth * row - i))) {
+        let row = Math.ceil(i / screenwidth);
+        // If pixel is to the left of the color boundary...
+        if (Math.ceil(i % 160 == 0) || (colorBoundaryPos >= 160 - (screenwidth * row - i))) {
             document.getElementById("screen").appendChild(createpixel).className = "pixel left00";
         }
+        // If pixel is to the right of the color boundary...
         else {
             document.getElementById("screen").appendChild(createpixel).className = "pixel right00";
         }
     }
     $(".left00").css("background-color", currentLeft00);
     $(".right00").css("background-color", currentRight00);
-    redrawColorBoundary(oledwidth, oledheight, colorBoundaryPos, "none");
+    redrawColorBoundary(screenwidth, screenheight, colorBoundaryPos, "none");
 }
 
 function colorPixel(clicked) {
-    let row = Math.ceil($(clicked.target).index() / oledwidth);
+    let row = Math.ceil($(clicked.target).index() / screenwidth);
     console.log(`color boundary: ${colorBoundaryPos}, clicked box: ${$(clicked.target).index()}`)
     // If drawing is to the right of the boundary...
-    if ((Math.ceil($(clicked.target).index() % 160 == 0) || (colorBoundaryPos >= 160 - (oledwidth * row - $(clicked.target).index())))) {
+    if ((Math.ceil($(clicked.target).index() % 160 == 0) || (colorBoundaryPos >= 160 - (screenwidth * row - $(clicked.target).index())))) {
         if (currentDrawPal == "00") {
             $(clicked.target).css("background-color", currentLeft00);
             clicked.target.className = "pixel " + "left00";
@@ -188,9 +190,9 @@ function colorPixel(clicked) {
     console.log(`clicked target bg: ${$(clicked.target).css("background-color")}`)
 }
 
-function redrawColorBoundary(oledwidth, oledheight, loc, direction) {
+function redrawColorBoundary(screenwidth, screenheight, loc, direction) {
     if (direction == "left") {
-        for (i = loc; i < oledheight * oledwidth; i = i + oledwidth) {
+        for (i = loc; i < screenheight * screenwidth; i = i + screenwidth) {
             $(".pixel").eq(i).css("border", ".25px solid #0e0e0e");
             if (isBoundaryVisible) {
                 $(".pixel").eq(i - 2).css("border-right", ".25px solid white");
@@ -203,7 +205,7 @@ function redrawColorBoundary(oledwidth, oledheight, loc, direction) {
         colorBoundaryPos = colorBoundaryPos - 2;
     }
     else if (direction == "right") {
-        for (i = loc; i < oledheight * oledwidth; i = i + oledwidth) {
+        for (i = loc; i < screenheight * screenwidth; i = i + screenwidth) {
             $(".pixel").eq(i).css("border", ".25px solid #0e0e0e");
             if (isBoundaryVisible) {
                 $(".pixel").eq(i + 2).css("border-right", ".25px solid white");
@@ -215,7 +217,7 @@ function redrawColorBoundary(oledwidth, oledheight, loc, direction) {
         colorBoundaryPos = colorBoundaryPos + 2;
     }
     else {
-        for (i = loc; i < oledheight * oledwidth; i = i + oledwidth) {
+        for (i = loc; i < screenheight * screenwidth; i = i + screenwidth) {
             $(".pixel").eq(i).css("border", ".25px solid #0e0e0e");
             if (isBoundaryVisible) {
                 $(".pixel").eq(i).css("border-right", ".25px solid white");
@@ -228,7 +230,7 @@ function redrawColorBoundary(oledwidth, oledheight, loc, direction) {
 }
 
 
-function fixColorBoundaryBufferZone(oledwidth, oledheight, loc, dir) {
+function fixColorBoundaryBufferZone(screenwidth, screenheight, loc, dir) {
     let a = -1;
     let b = 1;
     if (dir == "left") {
@@ -236,7 +238,7 @@ function fixColorBoundaryBufferZone(oledwidth, oledheight, loc, dir) {
         b = 3;
     }
     for (j = a; j < b; j++) {
-        for (i = loc + j; i < oledheight * oledwidth; i = i + oledwidth) {
+        for (i = loc + j; i < screenheight * screenwidth; i = i + screenwidth) {
             if ($(".pixel").eq(i)[0].className == "pixel left00") {
                 $(".pixel").eq(i)[0].className = "pixel right00"
                 $($(".pixel").eq(i)[0]).css("background-color", currentRight00);
