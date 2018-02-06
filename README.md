@@ -17,6 +17,8 @@ I'm teaching myself how to develop for the slightly-obscure Bally Astrocade, an 
 
 ## What's in this repo
 - The `demos` folder contains my Astrocade assembly language experiments, complete with comments where applicable. They require `HVGLIB.H` and the Zmac assembler. (See [Development toolchain](#development-toolchain) for more information.)
+    - `01-hellowords` is baby's first Astrocade homebrew, simply displaying text that reads, "HELLO, WORLDS!"
+    - `02-telephone` is an audio demo of a telephone ringing that also features background graphics.
 - The `tools` folder contains any tools or scripts I've created that may be of use for Astrocade software development. There's not much there now, but hopefully this will grow!
 
 ## Development toolchain
