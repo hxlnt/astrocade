@@ -38,7 +38,7 @@ Loop:       JP      Loop            ; Play infinite loop
 Palettes:   DB      $07,$FE,$FB,$00 ; Left color palette (11b, 10b, 01b, 00b)
             DB      $07,$4F,$CB,$00 ; Right color palette (11b, 10b, 01b, 00b)
 Telephone:                          ; Telephone graphic
-            INCLUDE "02-graphics.bal"
+            INCLUDE "02-telephone.gfx"
 Ringing:                            ; Music score
             MASTER  OA3             ; 
             VOLUME  $80, $00        ; 
