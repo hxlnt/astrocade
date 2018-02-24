@@ -382,7 +382,7 @@ document.getElementById("download").addEventListener("click", function (e) {
             imgarray[i] += 0x03;
         }
     }
-    let exportdata = " DB " + imgarray.toString() + "]"
+    let exportdata = " DB " + imgarray.toString()
     let blob = new Blob([exportdata], { type: "text/plain;charset=utf-8" });
     saveAs(blob, "astropaint.gfx.txt");
 });
