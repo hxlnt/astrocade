@@ -82,6 +82,7 @@ let screenwidth = 160;
 let screenheight = 102;
 let pixel = $(".pixel");
 let imgarray = [];
+let exportdata = ""
 
 
 
@@ -343,6 +344,7 @@ function fixColorBoundaryBufferZone(screenwidth, screenheight, loc, dir) {
 document.getElementById("download").addEventListener("click", function (e) {
     let pixels = document.querySelectorAll("div.pixel")
     console.log(pixels.length)
+    exportdata = ""
     for (i = 0; i < (pixels.length / 8); i++) {
         imgarray[i] = 0;
         if ((pixels[i * 8].className == "pixel left01") || (pixels[i * 8].className == "pixel right01")) {
@@ -381,10 +383,12 @@ document.getElementById("download").addEventListener("click", function (e) {
         else if (pixels[i * 8 + 3].className == "pixel left03" || pixels[i * 8 + 3].className == "pixel right03") {
             imgarray[i] += 0x03;
         }
+        exportdata = (exportdata + imgarray[i])
     }
-    let exportdata = " DB " + imgarray.toString()
-    let blob = new Blob([exportdata], { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "astropaint.gfx.txt");
+    let blob = new Blob([Uint8Array.from(imgarray)], { type: "application/octet-stream" })
+    console.log(imgarray)
+    console.log(`blob: ${blob}`)
+    saveAs(blob, "astropaint.gfx")
 });
 
 function setuppal1(){
