@@ -4,126 +4,224 @@
     <SCRIPT src="https://hxlntblob.blob.core.windows.net/nbm/alterdark/js/jquery-3.2.1.min.js"></SCRIPT>
     <SCRIPT src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></SCRIPT>
     <LINK rel="stylesheet" href="https://hxlntblob.blob.core.windows.net/nbm/alterdark/css/spectrum.css" type="text/css" />
+    <LINK rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gridly/1.1.0/gridly.min.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Outline|Faster+One" rel="stylesheet">
     <style>
-            #screen,
-            #controls, h1 {
-                margin: 1.25vw;
-            }
-            h1 {
-                font-family: "Courier New", "Courier", Courier, monospace;
-                font-size: 20px;
-            }
-            #controls {
-                display: block;
-                width: 25vw;
-            }
         
-            #screen {
-                background-color: black;
-                display: -ms-inline-flexbox;
-                display: -webkit-inline-flex;
-                display: inline-flex;
-                -webkit-flex-direction: row;
-                -ms-flex-direction: row;
-                flex-direction: row;
-                -webkit-flex-wrap: wrap;
-                -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-                -webkit-justify-content: flex-start;
-                -ms-flex-pack: start;
-                justify-content: flex-start;
-                -webkit-align-content: flex-start;
-                -ms-flex-line-pack: start;
-                align-content: flex-start;
-                -webkit-align-items: flex-start;
-                -ms-flex-align: start;
-                align-items: flex-start;
-                width: 1204px;
-                height: 765px;
-            }
-            #boundarycontainer{
-                margin-left: calc(1.25vw - 2px);
-                
-                width: 1208px;
-                height: 10px;
-            }
-            .boundary {
-                width: 10px;
-                height: 1px;
-                
-                /* display: block; */
-            }
-            .boundary:before{
-                content: "|";
-            }
-            .pixel {
-                width: 7px;
-                height: 7px;
-                border: 0.25px solid #0e0e0e;
-                -webkit-order: 0;
-                -ms-flex-order: 0;
-                order: 0;
-                -webkit-flex: 1 1 auto;
-                -ms-flex: 1 1 auto;
-                flex: 1 1 auto;
-                -webkit-align-self: auto;
-                -ms-flex-item-align: auto;
-                align-self: auto;
-            }
-            .palette {
-                float: left;
-                padding: 10px;
-            }
-            #palettecontainer {
-                float: left;
-            }
-            #field {
-                width: 320px;
-                height: 204px;
-            }
-        </style>
+        #screen,
+        #palettecontainer,
+        h1 {
+            margin: 1.25vw;
+        }
+
+        input[type='checkbox'] {
+            width: 1.2vw;
+            height: 1.2vw;
+            padding: 1px;
+            margin: 0;
+            vertical-align: bottom;
+            position: relative;
+            top: 2px;
+            *overflow: hidden;
+        }
+
+        html {
+            background: rgba(136, 136, 252, 1);
+            background: -webkit-linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
+            /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
+            ;
+            /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
+            ;
+            /* For Firefox 3.6 to 15 */
+            background: linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
+            ;
+            /* Standard syntax */
+            font-family: "Segoe UI", system-ui;
+            height: 100%;
+            font-size: 1vw;
+        }
+
+        h1 {
+            font-family: 'Bungee Outline', cursive;;
+            font-size: 3vw;
+            text-shadow: 0 0 0.75vw rgb(77, 64, 196);
+        }
+
+        .decoration {
+            font-size: 3vw;
+            font-family: "Segoe UI", system-ui;
+            /* color: rgba(243, 89, 62, 1); */
+            color: rgb(77, 64, 196);
+            font-weight: 600;
+            text-shadow: 0 0 0;
+        }
+
+        p,
+        button {
+            font-family: "Segoe UI", system-ui;
+            font-size: 0.7vw;
+            font-weight: 600;
+        }
+
+        label {
+            display: block;
+        }
+
+        sup {
+            margin-left: -.5vw;
+            text-decoration: none;
+        }
+
+        .sublabel {
+            padding-left: 1.2vw;
+        }
+
+        #screen {
+            background-color: black;
+            display: -ms-inline-flexbox;
+            display: -webkit-inline-flex;
+            display: inline-flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            -webkit-align-content: flex-start;
+            -ms-flex-line-pack: start;
+            align-content: flex-start;
+            -webkit-align-items: flex-start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            width: 64vw;
+            height: 40.8vw;
+            box-shadow: 8px 8px 0 0 rgb(77, 64, 196);
+        }
+
+        #boundarycontainer {
+            margin-left: calc(1.25vw - 2px);
+
+            width: 1208px;
+            height: 10px;
+        }
+
+        .boundary {
+            width: 10px;
+            height: 1px;
+
+            /* display: block; */
+        }
+
+        .boundary:before {
+            content: "|";
+        }
+
+        .pixel {
+            box-sizing: border-box;
+            width: calc(0.4vw);
+            height: calc(0.4vw);
+            border: 0.25px solid #0e0e0e;
+            -webkit-order: 0;
+            -ms-flex-order: 0;
+            order: 0;
+            -webkit-flex: 1 1 auto;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            -webkit-align-self: auto;
+            -ms-flex-item-align: auto;
+            align-self: auto;
+        }
+
+        #palettecontainer {
+            /* float: left; */
+            padding: 20px;
+            background: rgba(243, 89, 62, 1);
+            box-shadow: 8px 8px 0 0 rgb(77, 64, 196);
+        }
+
+        #field {
+            width: 320px;
+            height: 204px;
+        }
+    </style>
     <SCRIPT src="https://hxlntblob.blob.core.windows.net/nbm/alterdark/js/spectrum.js"></SCRIPT>
 </HEAD>
 
 <BODY>
-    <h1>AstroPaint<sup>💫</sup></h1>
-    <div id="boundarycontainer"></div>
-    <div id="screen"></div>
-    <div id="palettecontainer">
-        <div class="palette">
-            <p>Left palette | Right palette</p>
-            <input type="radio" name="palselect" value="00"></input>
-            <INPUT type="text" class="showPaletteOnly" id="left00" />
-            <INPUT type="text" class="showPaletteOnly" id="right00" />
+        <h1><span class="decoration">&#9790;:\ </span> AstroPaint</h1>
+    <div id="appcontainer" class="row">
+        <div id="leftside" class="col">
+            <div id="screen">
+            </div>
+        </div>
+        <div id="rightside" class="col">
+
+        </div>
+
+        <div id="palettecontainer">
+            <strong>Drawing tools</strong>
             <HR>
-            <input type="radio" name="palselect" value="01" checked></input>
-            <INPUT type="text" class="showPaletteOnly" id="left01" />
-            <INPUT type="text" class="showPaletteOnly" id="right01" />
+            <div class="row">
+                <div class="palette col" style="margin-right:10px">
+                    Pencil
+                    <p>Customize each two-color palette with colors for the left and right sides of the color boundary.</p>
+                    <input type="radio" name="palselect" value="00"></input>
+                    <INPUT type="text" class="showPaletteOnly" id="left00" />
+                    <INPUT type="text" class="showPaletteOnly" id="right00" />
+                    <BR>
+                    <input type="radio" name="palselect" value="01" checked></input>
+                    <INPUT type="text" class="showPaletteOnly" id="left01" />
+                    <INPUT type="text" class="showPaletteOnly" id="right01" />
+                    <BR>
+                    <input type="radio" name="palselect" value="02"></input>
+                    <INPUT type="text" class="showPaletteOnly" id="left02" />
+                    <INPUT type="text" class="showPaletteOnly" id="right02" />
+                    <BR>
+                    <input type="radio" name="palselect" value="03"></input>
+                    <INPUT type="text" class="showPaletteOnly" id="left03" />
+                    <INPUT type="text" class="showPaletteOnly" id="right03" />
+                </div>
+                <div id="gridcontrols" class="col">
+                    Grid controls
+                    <p>Move color boundary with left and right arrow keys, even when hidden.</p>
+                    <label>
+                        <INPUT type="checkbox" id="gridtoggle" checked="checked" />Show pixel grid
+                    </label>
+                        <label class="sublabel">
+                    <INPUT type="checkbox" id="boundarytoggle" checked="checked" >Show color boundary
+                    </label>
+                </div>
+            </div>
+            <BR>
+            <BR>
+            <strong>Export</strong>
             <HR>
-            <input type="radio" name="palselect" value="02"></input>
-            <INPUT type="text" class="showPaletteOnly" id="left02" />
-            <INPUT type="text" class="showPaletteOnly" id="right02" />
-            <HR>
-            <input type="radio" name="palselect" value="03"></input>
-            <INPUT type="text" class="showPaletteOnly" id="left03" />
-            <INPUT type="text" class="showPaletteOnly" id="right03" />
+                <button id="download">Save as assembly source</button>
+            <BR>
             <BR><BR>
-            <INPUT type="checkbox" id="boundarytoggle" checked="checked">Show color boundary
-            <p>Hint: Move color boundary with left and right arrow keys</p> 
-            <BR><BR>
-            <p><strong>UNIMPLEMENTED FEATURES:</strong></p>
+            <strong>Unimplemented features</strong>
+            <HR>
             <p>Screen mode:
-            <select id="oledsize">
-                <option value="lores">LO-RES</option>
-                <option value="hires">HI-RES</option>
-            </select></p>
-            <p>Upload .astropaint (Z-80 ASM): <input type="file" id="uploadjs" /></p>
-            <button id="download">Save .astropaint (Z-80 ASM)</button>
+                <select id="oledsize" disabled>
+                    <option value="lores">LO-RES</option>
+                    <option value="hires">HI-RES</option>
+                </select>
+            </p>
+            <p>Upload .astropaint (Z80-ASM):
+                <input type="file" id="uploadjs" name="uploadjs" disabled />
+            </p>
+            <p>Make a pull request and find more Bally Astrocade dev tools on <a href="https://github.com/hxlnt/astrocade" target="new">GitHub</a>.</p>
+            <BR>
+            <p>&#9790;:\ 2018 <a href="http://www.nobadmemories.com" target="new">hxlnt</a></p>
         </div>
     </div>
 
-    <!-- Not implemented yet -->
-    <!-- <script src="lib/file-saver/FileSaver.min.js"></script> -->
+    <script src="FileSaver.min.js"></script>
     <script src="script.js"></script>
 </BODY>
 

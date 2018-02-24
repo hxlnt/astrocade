@@ -70,16 +70,18 @@ let tool = 'draw';
 let currentDrawPal = "01";
 let currentLeft00 = astrocadePalette[0x00];
 let currentLeft01 = astrocadePalette[0x44];
-let currentLeft02 = astrocadePalette[0xAA];
+let currentLeft02 = astrocadePalette[0xEF];
 let currentLeft03 = astrocadePalette[0x77];
 let currentRight00 = astrocadePalette[0x00];
 let currentRight01 = astrocadePalette[0xCC];
 let currentRight02 = astrocadePalette[0x4F];
-let currentRight03 = astrocadePalette[0x3F];
-let colorBoundaryPos = 81;
+let currentRight03 = astrocadePalette[0x08];
+let colorBoundaryPos = 84;
 let isBoundaryVisible = true;
 let screenwidth = 160;
 let screenheight = 102;
+let pixel = $(".pixel");
+let imgarray = [];
 
 
 
@@ -106,6 +108,21 @@ $("input[id='boundarytoggle']").on("click", function () {
     redrawColorBoundary(screenwidth, screenheight, colorBoundaryPos, "none");
 });
 
+$("input[id='gridtoggle']").on("click", function () {
+    isGridVisible = $("input[id='gridtoggle']")[0].checked;
+    if (isGridVisible) {
+        $(".pixel", "#screen").css({"border":".25px solid #0e0e0e"});
+        isBoundaryVisible = $("input[id='boundarytoggle']")[0].checked;
+        redrawColorBoundary(screenwidth, screenheight, colorBoundaryPos, "none");
+        $("input[id='boundarytoggle']").attr({'disabled': false});
+    }
+    else { 
+        $(".pixel", "#screen").css({"border":"0"});
+        isBoundaryVisible = false;
+        $("input[id='boundarytoggle']").attr({'disabled': true});
+ }
+});
+
 // Click handler for turning on individual pixel
 document.getElementById("screen").addEventListener("pointerdown", function (e) {
     if (e.target && e.target.matches("div.pixel")) { colorPixel(e) }
@@ -120,12 +137,12 @@ $("html").keyup(function (event) {
     if (event.which == 37) {
         event.preventDefault();
         redrawColorBoundary(screenwidth, screenheight, colorBoundaryPos, "left");
-        fixColorBoundaryBufferZone(screenwidth, screenheight, colorBoundaryPos, "left")
+        fixColorBoundaryBufferZone2(screenwidth, screenheight, colorBoundaryPos, "left")
     }
     else if (event.which == 39) {
         event.preventDefault();
         redrawColorBoundary(screenwidth, screenheight, colorBoundaryPos, "right");
-        fixColorBoundaryBufferZone(screenwidth, screenheight, colorBoundaryPos, "right")
+        fixColorBoundaryBufferZone2(screenwidth, screenheight, colorBoundaryPos, "right")
     }
 });
 
@@ -134,7 +151,7 @@ function drawAstrocadeScreen(screenwidth, screenheight) {
         let createpixel = document.createElement("div");
         let row = Math.ceil(i / screenwidth);
         // If pixel is to the left of the color boundary...
-        if (Math.ceil(i % 160 == 0) || (colorBoundaryPos >= 160 - (screenwidth * row - i))) {
+        if (Math.ceil(i % 160 == 0) || (colorBoundaryPos > 160 - (screenwidth * row - i))) {
             document.getElementById("screen").appendChild(createpixel).className = "pixel left00";
         }
         // If pixel is to the right of the color boundary...
@@ -149,9 +166,8 @@ function drawAstrocadeScreen(screenwidth, screenheight) {
 
 function colorPixel(clicked) {
     let row = Math.ceil($(clicked.target).index() / screenwidth);
-    console.log(`color boundary: ${colorBoundaryPos}, clicked box: ${$(clicked.target).index()}`)
     // If drawing is to the right of the boundary...
-    if ((Math.ceil($(clicked.target).index() % 160 == 0) || (colorBoundaryPos >= 160 - (screenwidth * row - $(clicked.target).index())))) {
+    if ((Math.ceil($(clicked.target).index() % 160 == 0) || (colorBoundaryPos > 160 - (screenwidth * row - $(clicked.target).index())))) {
         if (currentDrawPal == "00") {
             $(clicked.target).css("background-color", currentLeft00);
             clicked.target.className = "pixel " + "left00";
@@ -193,87 +209,184 @@ function colorPixel(clicked) {
 function redrawColorBoundary(screenwidth, screenheight, loc, direction) {
     if (direction == "left") {
         for (i = loc; i < screenheight * screenwidth; i = i + screenwidth) {
-            $(".pixel").eq(i).css("border", ".25px solid #0e0e0e");
+            $(".pixel", "#screen").eq(i).css("border", ".25px solid #0e0e0e");
             if (isBoundaryVisible) {
-                $(".pixel").eq(i - 2).css("border-right", ".25px solid white");
+                $(".pixel", "#screen").eq(i - 4).css("border-left", ".25px solid rgba(243, 89, 62, 1)");
             }
             else {
-                $(".pixel").eq(i - 2).css("border-right", ".25px solid #0e0e0e");
+                $(".pixel", "#screen").eq(i - 4).css("border-left", ".25px solid #0e0e0e");
             }
 
         }
-        colorBoundaryPos = colorBoundaryPos - 2;
+        colorBoundaryPos = colorBoundaryPos - 4;
     }
     else if (direction == "right") {
         for (i = loc; i < screenheight * screenwidth; i = i + screenwidth) {
-            $(".pixel").eq(i).css("border", ".25px solid #0e0e0e");
+            $(".pixel", "#screen").eq(i).css("border", ".25px solid #0e0e0e");
             if (isBoundaryVisible) {
-                $(".pixel").eq(i + 2).css("border-right", ".25px solid white");
+                $(".pixel", "#screen").eq(i + 4).css("border-left", ".25px solid rgba(243, 89, 62, 1)");
             }
             else {
-                $(".pixel").eq(i + 2).css("border-right", ".25px solid #0e0e0e");
-            }
+                $(".pixel", "#screen").eq(i + 4).css("border-left", ".25px solid #0e0e0e");
+           }
         }
-        colorBoundaryPos = colorBoundaryPos + 2;
+        colorBoundaryPos = colorBoundaryPos + 4;
     }
     else {
         for (i = loc; i < screenheight * screenwidth; i = i + screenwidth) {
-            $(".pixel").eq(i).css("border", ".25px solid #0e0e0e");
+            $(".pixel", "#screen").eq(i).css("border", ".25px solid #0e0e0e");
             if (isBoundaryVisible) {
-                $(".pixel").eq(i).css("border-right", ".25px solid white");
+                $(".pixel", "#screen").eq(i).css("border-left", ".25px solid rgba(243, 89, 62, 1)");
             }
             else {
-                $(".pixel").eq(i).css("border-right", ".25px solid #0e0e0e");
+              //  $(".pixel", "#screen").eq(i).css("border-left", ".25px solid #0e0e0e");
             }
         }
     }
 }
 
-
-function fixColorBoundaryBufferZone(screenwidth, screenheight, loc, dir) {
-    let a = -1;
-    let b = 1;
+function fixColorBoundaryBufferZone2(screenwidth, screenheight, loc, dir){
     if (dir == "left") {
-        a = 1;
-        b = 3;
+        let a = 0;
+        let b = 4;
+        for (j = a; j < b; j++) {
+            for (i = loc + j; i < screenheight * screenwidth; i = i + screenwidth) {
+                if ($(".pixel", "#screen").eq(i)[0].className == "pixel left00") {
+                    $(".pixel", "#screen").eq(i)[0].className = "pixel right00"
+                }
+                else if ($(".pixel", "#screen").eq(i)[0].className == "pixel left01") {
+                    $(".pixel", "#screen").eq(i)[0].className = "pixel right01";
+                }
+                else if ($(".pixel", "#screen").eq(i)[0].className == "pixel left02") {
+                    $(".pixel", "#screen").eq(i)[0].className = "pixel right02"
+                }
+                else if ($(".pixel", "#screen").eq(i)[0].className == "pixel left03") {
+                    $(".pixel", "#screen").eq(i)[0].className = "pixel right03"
+                }
+            }
+        }
+    }
+    else if (dir == "right") {
+        let a = -4;
+        let b = 0;
+        for (j = a; j < b; j++) {
+            for (i = loc + j; i < screenheight * screenwidth; i = i + screenwidth) {
+                if ($(".pixel", "#screen").eq(i)[0].className == "pixel right00") {
+                    $(".pixel", "#screen").eq(i)[0].className = "pixel left00"
+                }
+                else if ($(".pixel", "#screen").eq(i)[0].className == "pixel right01") {
+                    $(".pixel", "#screen").eq(i)[0].className = "pixel left01"
+                }
+                else if ($(".pixel", "#screen").eq(i)[0].className == "pixel right02") {
+                    $(".pixel", "#screen").eq(i)[0].className = "pixel left02"
+                }
+                else if ($(".pixel", "#screen").eq(i)[0].className == "pixel right03") {
+                    $(".pixel", "#screen").eq(i)[0].className = "pixel left03"
+                }
+            }
+        }
+    }
+    $( ".left00" ).css( "background-color", currentLeft00 );
+    $( ".left01" ).css( "background-color", currentLeft01 );
+    $( ".left02" ).css( "background-color", currentLeft02 );
+    $( ".left03" ).css( "background-color", currentLeft03 );
+    $( ".right00" ).css( "background-color", currentRight00 );
+    $( ".right01" ).css( "background-color", currentRight01 );
+    $( ".right02" ).css( "background-color", currentRight02 );
+    $( ".right03" ).css( "background-color", currentRight03 );
+}
+function fixColorBoundaryBufferZone(screenwidth, screenheight, loc, dir) {
+    let a = -4;
+    let b = 0;
+    if (dir == "left") {
+        a = 0;
+        b = 4;
     }
     for (j = a; j < b; j++) {
         for (i = loc + j; i < screenheight * screenwidth; i = i + screenwidth) {
-            if ($(".pixel").eq(i)[0].className == "pixel left00") {
-                $(".pixel").eq(i)[0].className = "pixel right00"
-                $($(".pixel").eq(i)[0]).css("background-color", currentRight00);
+            if ($(".pixel", "#screen").eq(i)[0].className == "pixel left00") {
+                $(".pixel", "#screen").eq(i)[0].className = "pixel right00"
             }
-            else if ($(".pixel").eq(i)[0].className == "pixel left01") {
-                $(".pixel").eq(i)[0].className = "pixel right01";
-                $($(".pixel").eq(i)[0]).css("background-color", currentRight01);
+            else if ($(".pixel", "#screen").eq(i)[0].className == "pixel right00") {
+                $(".pixel", "#screen").eq(i)[0].className = "pixel left00"
             }
-            else if ($(".pixel").eq(i)[0].className == "pixel left02") {
-                $(".pixel").eq(i)[0].className = "pixel right02"
-                $($(".pixel").eq(i)[0]).css("background-color", currentRight02);
+            else if ($(".pixel", "#screen").eq(i)[0].className == "pixel left01") {
+                $(".pixel", "#screen").eq(i)[0].className = "pixel right01";
             }
-            else if ($(".pixel").eq(i)[0].className == "pixel left03") {
-                $(".pixel").eq(i)[0].className = "pixel right03"
-                $($(".pixel").eq(i)[0]).css("background-color", currentRight03);
+            else if ($(".pixel", "#screen").eq(i)[0].className == "pixel right01") {
+                $(".pixel", "#screen").eq(i)[0].className = "pixel left01"
             }
-            else if ($(".pixel").eq(i)[0].className == "pixel right00") {
-                $(".pixel").eq(i)[0].className = "pixel left00"
-                $($(".pixel").eq(i)[0]).css("background-color", currentLeft00);
+            else if ($(".pixel", "#screen").eq(i)[0].className == "pixel left02") {
+                $(".pixel", "#screen").eq(i)[0].className = "pixel right02"
             }
-            else if ($(".pixel").eq(i)[0].className == "pixel right01") {
-                $(".pixel").eq(i)[0].className = "pixel left01"
-                $($(".pixel").eq(i)[0]).css("background-color", currentLeft01);
+            else if ($(".pixel", "#screen").eq(i)[0].className == "pixel right02") {
+                $(".pixel", "#screen").eq(i)[0].className = "pixel left02"
             }
-            else if ($(".pixel").eq(i)[0].className == "pixel right02") {
-                $(".pixel").eq(i)[0].className = "pixel left02"
-                $($(".pixel").eq(i)[0]).css("background-color", currentLeft02);
+            else if ($(".pixel", "#screen").eq(i)[0].className == "pixel left03") {
+                $(".pixel", "#screen").eq(i)[0].className = "pixel right03"
             }
-            else if ($(".pixel").eq(i)[0].className == "pixel right03") {
-                $(".pixel").eq(i)[0].className = "pixel left03"
-                $($(".pixel").eq(i)[0]).css("background-color", currentLeft03);
+            else if ($(".pixel", "#screen").eq(i)[0].className == "pixel right03") {
+                $(".pixel", "#screen").eq(i)[0].className = "pixel left03"
             }
         }
     }
+    $( ".left00" ).css( "background-color", currentLeft00 );
+    $( ".left01" ).css( "background-color", currentLeft01 );
+    $( ".left02" ).css( "background-color", currentLeft02 );
+    $( ".left03" ).css( "background-color", currentLeft03 );
+    $( ".right00" ).css( "background-color", currentRight00 );
+    $( ".right01" ).css( "background-color", currentRight01 );
+    $( ".right02" ).css( "background-color", currentRight02 );
+    $( ".right03" ).css( "background-color", currentRight03 );
 }
+
+document.getElementById("download").addEventListener("click", function (e) {
+    let pixels = document.querySelectorAll("div.pixel")
+    console.log(pixels.length)
+    for (i = 0; i < (pixels.length / 8); i++) {
+        imgarray[i] = 0;
+        if ((pixels[i * 8].className == "pixel left01") || (pixels[i * 8].className == "pixel right01")) {
+            imgarray[i] += 0x40;
+        }
+        else if (pixels[i * 8].className == "pixel left02" || pixels[i * 8].className == "pixel right02") {
+            imgarray[i] += 0x80;
+        }
+        else if (pixels[i * 8].className == "pixel left03" || pixels[i * 8].className == "pixel right03") {
+            imgarray[i] += 0xC0;
+        }
+        if (pixels[i * 8 + 1].className == "pixel left01" || pixels[i * 8 + 1].className == "pixel right01") {
+            imgarray[i] += 0x10;
+        }
+        else if (pixels[i * 8 + 1].className == "pixel left02" || pixels[i * 8 + 1].className == "pixel right02") {
+            imgarray[i] += 0x20;
+        }
+        else if (pixels[i * 8 + 1].className == "pixel left03" || pixels[i * 8 + 1].className == "pixel right03") {
+            imgarray[i] += 0x30;
+        }
+        if (pixels[i * 8 + 2].className == "pixel left01" || pixels[i * 8 + 2].className == "pixel right01") {
+            imgarray[i] += 0x04;
+        }
+        else if (pixels[i * 8 + 2].className == "pixel left02" || pixels[i * 8 + 2].className == "pixel right02") {
+            imgarray[i] += 0x08;
+        }
+        else if (pixels[i * 8 + 2].className == "pixel left03" || pixels[i * 8 + 2].className == "pixel right03") {
+            imgarray[i] += 0x0C;
+        }
+        if (pixels[i * 8 + 3].className == "pixel left01" || pixels[i * 8 + 3].className == "pixel right01") {
+            imgarray[i] += 0x01;
+        }
+        else if (pixels[i * 8 + 3].className == "pixel left02" || pixels[i * 8 + 3].className == "pixel right02") {
+            imgarray[i] += 0x02;
+        }
+        else if (pixels[i * 8 + 3].className == "pixel left03" || pixels[i * 8 + 3].className == "pixel right03") {
+            imgarray[i] += 0x03;
+        }
+    }
+    console.log(imgarray);
+    let exportdata = "module.exports = [" + imgarray.toString() + "]"
+    let blob = new Blob([exportdata], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "sourcecode.asm.txt");
+});
 
 function setuppal1(){
     $("#left00").spectrum({
@@ -303,7 +416,7 @@ function setuppal1(){
     $("#left02").spectrum({
         showPaletteOnly: true,
         showPalette: true,
-        color: astrocadePalette[0xAA],
+        color: astrocadePalette[0xEE],
         showPaletteOnly: true,
         hideAfterPaletteSelect: true,
         hide: function(color) {
@@ -363,7 +476,7 @@ function setuppal1(){
     $("#right03").spectrum({
         showPaletteOnly: true,
         showPalette: true,
-        color: astrocadePalette[0x3F],
+        color: astrocadePalette[0x09],
         showPaletteOnly: true,
         hideAfterPaletteSelect: true,
         hide: function(color) {
