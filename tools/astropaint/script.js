@@ -345,42 +345,42 @@ document.getElementById("download").addEventListener("click", function (e) {
     let pixels = document.querySelectorAll("div.pixel")
     console.log(pixels.length)
     exportdata = ""
-    for (i = 0; i < (pixels.length / 8); i++) {
+    for (i = 0; i < (pixels.length / 4); i++) {
         imgarray[i] = 0;
-        if ((pixels[i * 8].className == "pixel left01") || (pixels[i * 8].className == "pixel right01")) {
+        if ((pixels[i * 4].className == "pixel left01") || (pixels[i * 4].className == "pixel right01")) {
             imgarray[i] += 0x40;
         }
-        else if (pixels[i * 8].className == "pixel left02" || pixels[i * 8].className == "pixel right02") {
+        else if (pixels[i * 4].className == "pixel left02" || pixels[i * 4].className == "pixel right02") {
             imgarray[i] += 0x80;
         }
-        else if (pixels[i * 8].className == "pixel left03" || pixels[i * 8].className == "pixel right03") {
+        else if (pixels[i * 4].className == "pixel left03" || pixels[i * 4].className == "pixel right03") {
             imgarray[i] += 0xC0;
         }
-        if (pixels[i * 8 + 1].className == "pixel left01" || pixels[i * 8 + 1].className == "pixel right01") {
+        if (pixels[i * 4 + 1].className == "pixel left01" || pixels[i * 4 + 1].className == "pixel right01") {
             imgarray[i] += 0x10;
         }
-        else if (pixels[i * 8 + 1].className == "pixel left02" || pixels[i * 8 + 1].className == "pixel right02") {
+        else if (pixels[i * 4 + 1].className == "pixel left02" || pixels[i * 4 + 1].className == "pixel right02") {
             imgarray[i] += 0x20;
         }
-        else if (pixels[i * 8 + 1].className == "pixel left03" || pixels[i * 8 + 1].className == "pixel right03") {
+        else if (pixels[i * 4 + 1].className == "pixel left03" || pixels[i * 4 + 1].className == "pixel right03") {
             imgarray[i] += 0x30;
         }
-        if (pixels[i * 8 + 2].className == "pixel left01" || pixels[i * 8 + 2].className == "pixel right01") {
+        if (pixels[i * 4 + 2].className == "pixel left01" || pixels[i * 4 + 2].className == "pixel right01") {
             imgarray[i] += 0x04;
         }
-        else if (pixels[i * 8 + 2].className == "pixel left02" || pixels[i * 8 + 2].className == "pixel right02") {
+        else if (pixels[i * 4 + 2].className == "pixel left02" || pixels[i * 4 + 2].className == "pixel right02") {
             imgarray[i] += 0x08;
         }
-        else if (pixels[i * 8 + 2].className == "pixel left03" || pixels[i * 8 + 2].className == "pixel right03") {
+        else if (pixels[i * 4 + 2].className == "pixel left03" || pixels[i * 4 + 2].className == "pixel right03") {
             imgarray[i] += 0x0C;
         }
-        if (pixels[i * 8 + 3].className == "pixel left01" || pixels[i * 8 + 3].className == "pixel right01") {
+        if (pixels[i * 4 + 3].className == "pixel left01" || pixels[i * 4 + 3].className == "pixel right01") {
             imgarray[i] += 0x01;
         }
-        else if (pixels[i * 8 + 3].className == "pixel left02" || pixels[i * 8 + 3].className == "pixel right02") {
+        else if (pixels[i * 4 + 3].className == "pixel left02" || pixels[i * 4 + 3].className == "pixel right02") {
             imgarray[i] += 0x02;
         }
-        else if (pixels[i * 8 + 3].className == "pixel left03" || pixels[i * 8 + 3].className == "pixel right03") {
+        else if (pixels[i * 4 + 3].className == "pixel left03" || pixels[i * 4 + 3].className == "pixel right03") {
             imgarray[i] += 0x03;
         }
         exportdata = (exportdata + imgarray[i])
