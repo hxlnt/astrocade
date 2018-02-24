@@ -46,7 +46,7 @@
         h1 {
             font-family: 'Bungee Outline', cursive;;
             font-size: 3vw;
-            text-shadow: 0 0 0.75vw rgb(77, 64, 196);
+            /* text-shadow: 0 0 0.75vw rgb(77, 64, 196); */
         }
 
         .decoration {
@@ -212,10 +212,16 @@
                     <option value="hires">HI-RES</option>
                 </select>
             </p>
-            <p>Upload .astropaint (Z80-ASM):
+            <p>Save as Astrocade binary
+                    <button id="downloadbin" disabled>Save as assembly source</button>
+                </p>
+            <p>Upload assembly source
                 <input type="file" id="uploadjs" name="uploadjs" disabled />
             </p>
-            <p>Make a pull request and find more Bally Astrocade dev tools on <a href="https://github.com/hxlnt/astrocade" target="new">GitHub</a>.</p>
+            <p>Import BMP
+                    <input type="file" id="uploadjs" name="uploadjs" disabled />
+                </p>
+            <p>Contribute to this open-source project or find more Bally Astrocade demos and dev tools on <a href="https://github.com/hxlnt/astrocade" target="new">GitHub</a>.</p>
             <BR>
             <p>&#9790;:\ 2018 <a href="http://www.nobadmemories.com" target="new">hxlnt</a></p>
         </div>
