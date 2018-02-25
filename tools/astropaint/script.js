@@ -204,7 +204,6 @@ function colorPixel(clicked) {
             clicked.target.className = "pixel " + "right03";
         }
     }
-    console.log(`clicked target bg: ${$(clicked.target).css("background-color")}`)
 }
 
 function redrawColorBoundary(screenwidth, screenheight, loc, direction) {
@@ -343,7 +342,6 @@ function fixColorBoundaryBufferZone(screenwidth, screenheight, loc, dir) {
 
 document.getElementById("download").addEventListener("click", function (e) {
     let pixels = document.querySelectorAll("div.pixel")
-    console.log(pixels.length)
     exportdata = ""
     for (i = 0; i < (pixels.length / 4); i++) {
         imgarray[i] = 0;
@@ -383,12 +381,22 @@ document.getElementById("download").addEventListener("click", function (e) {
         else if (pixels[i * 4 + 3].className == "pixel left03" || pixels[i * 4 + 3].className == "pixel right03") {
             imgarray[i] += 0x03;
         }
-        exportdata = (exportdata + imgarray[i])
     }
-    let blob = new Blob([Uint8Array.from(imgarray)], { type: "application/octet-stream" })
-    console.log(imgarray)
-    console.log(`blob: ${blob}`)
+
+    // Export .asm
+    let asmsrc = ""
+    for (i=0; i<imgarray.length;) {
+        asmsrc = asmsrc + "\nDB $" + imgarray[i].toString(16) + ", $" + imgarray[i+1].toString(16) + ", $" + imgarray[i+2].toString(16) + ", $" + imgarray[i+3].toString(16) + ", $" + imgarray[i+4].toString(16);
+        i = i+5;
+    }
+
+    // Export binary
+    // let blob = new Blob([Uint8Array.from(imgarray)], { type: "application/octet-stream" })
+
+    let blob = new Blob([asmsrc], { type: "text" })
     saveAs(blob, "astropaint.gfx")
+
+
 });
 
 function setuppal1(){

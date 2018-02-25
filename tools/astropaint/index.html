@@ -5,157 +5,15 @@
     <SCRIPT src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></SCRIPT>
     <LINK rel="stylesheet" href="https://hxlntblob.blob.core.windows.net/nbm/alterdark/css/spectrum.css" type="text/css" />
     <LINK rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gridly/1.1.0/gridly.min.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Faster+One" rel="stylesheet">
-    <style>
-        
-        #screen,
-        #palettecontainer,
-        h1 {
-            margin: 1.25vw;
-        }
-
-        input[type='checkbox'] {
-            width: 1.2vw;
-            height: 1.2vw;
-            padding: 1px;
-            margin: 0;
-            vertical-align: bottom;
-            position: relative;
-            top: 2px;
-            *overflow: hidden;
-        }
-
-        html {
-            background: rgba(136, 136, 252, 1);
-            background: -webkit-linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
-            /* For Safari 5.1 to 6.0 */
-            background: -o-linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
-            ;
-            /* For Opera 11.1 to 12.0 */
-            background: -moz-linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
-            ;
-            /* For Firefox 3.6 to 15 */
-            background: linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
-            ;
-            /* Standard syntax */
-            font-family: "Segoe UI", system-ui;
-            height: 100%;
-            font-size: 1vw;
-        }
-
-        h1 {
-            font-family: 'Bungee Inline', cursive;;
-            font-size: 3.3vw;
-            color: rgb(77, 64, 196);
-            /* text-decoration: underline  rgba(243, 89, 62, 1); */
-            line-height: 5vw;
-            /* text-shadow: 0 0 0.75vw rgb(77, 64, 196); */
-        }
-
-        .decoration {
-            font-size: 3.3vw;
-            font-family: "Segoe UI", system-ui;
-            color: rgb(77, 64, 196);
-            font-weight: 600;
-            text-shadow: 0 0 0;
-        }
-
-        p,
-        button {
-            font-family: "Segoe UI", system-ui;
-            font-size: 0.7vw;
-            font-weight: 600;
-        }
-
-        label {
-            display: block;
-        }
-
-        sup {
-            margin-left: -.5vw;
-            text-decoration: none;
-        }
-
-        .sublabel {
-            padding-left: 1.2vw;
-        }
-
-        #screen {
-            background-color: black;
-            display: -ms-inline-flexbox;
-            display: -webkit-inline-flex;
-            display: inline-flex;
-            -webkit-flex-direction: row;
-            -ms-flex-direction: row;
-            flex-direction: row;
-            -webkit-flex-wrap: wrap;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            -webkit-justify-content: flex-start;
-            -ms-flex-pack: start;
-            justify-content: flex-start;
-            -webkit-align-content: flex-start;
-            -ms-flex-line-pack: start;
-            align-content: flex-start;
-            -webkit-align-items: flex-start;
-            -ms-flex-align: start;
-            align-items: flex-start;
-            width: 64vw;
-            height: 40.8vw;
-            box-shadow: 8px 8px 0 0 rgb(77, 64, 196);
-        }
-
-        #boundarycontainer {
-            margin-left: calc(1.25vw - 2px);
-
-            width: 1208px;
-            height: 10px;
-        }
-
-        .boundary {
-            width: 10px;
-            height: 1px;
-
-            /* display: block; */
-        }
-
-        .boundary:before {
-            content: "|";
-        }
-
-        .pixel {
-            box-sizing: border-box;
-            width: calc(0.4vw);
-            height: calc(0.4vw);
-            border: 0.25px solid #0e0e0e;
-            -webkit-order: 0;
-            -ms-flex-order: 0;
-            order: 0;
-            -webkit-flex: 1 1 auto;
-            -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-            -webkit-align-self: auto;
-            -ms-flex-item-align: auto;
-            align-self: auto;
-        }
-
-        #palettecontainer {
-            /* float: left; */
-            padding: 20px;
-            background: rgba(243, 89, 62, 1);
-            box-shadow: 8px 8px 0 0 rgb(77, 64, 196);
-        }
-
-        #field {
-            width: 320px;
-            height: 204px;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Sniglet:800" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <SCRIPT src="https://hxlntblob.blob.core.windows.net/nbm/alterdark/js/spectrum.js"></SCRIPT>
 </HEAD>
 
 <BODY>
-        <h1><span class="decoration">&#9790;:\ </span> AstroPaint</h1>
+    <h1>AstroPaint
+        <sup>💫</sup>
+    </h1>
     <div id="appcontainer" class="row">
         <div id="leftside" class="col">
             <div id="screen">
@@ -194,8 +52,8 @@
                     <label>
                         <INPUT type="checkbox" id="gridtoggle" checked="checked" />Show pixel grid
                     </label>
-                        <label class="sublabel">
-                    <INPUT type="checkbox" id="boundarytoggle" checked="checked" >Show color boundary
+                    <label class="sublabel">
+                        <INPUT type="checkbox" id="boundarytoggle" checked="checked">Show color boundary
                     </label>
                 </div>
             </div>
@@ -203,27 +61,29 @@
             <BR>
             <strong>Export</strong>
             <HR>
-                <button id="download">Save as binary</button>
+            <button id="download">Save as Z80 ASM</button>
             <BR>
-            <BR><BR>
-            <strong>Unimplemented features</strong>
+            <BR>
+            <BR>
+            <strong>About</strong>
             <HR>
-            <button id="downloadbin" disabled>Save as Astrocade ROM</button>
-            <p>Screen mode 
-                <select id="oledsize" disabled>
-                    <option value="lores">LO-RES</option>
-                    <option value="hires">HI-RES</option>
-                </select>
+            <p>Astropaint is a browser-based drawing tool for easily creating homebrew graphics for the Bally Astrocade 8-bit
+                game console.</p>
+            <p>Contribute to this open-source project or find more Bally Astrocade demos and dev tools on
+                <a href="https://github.com/hxlnt/astrocade"
+                    target="new">GitHub</a>.</p>
+            <p>
+                <strong>Unimplemented features </strong>
+                <a href="https://github.com/hxlnt/astrocade/issues/1" target="new">Export compiled Astrocade ROM</a> &middot;
+                <a href="https://github.com/hxlnt/astrocade/issues/1" target="new">Export Astrocade ROM source</a> &middot;
+                <a href="https://github.com/hxlnt/astrocade/issues/2" target="new">Save screenshot</a> &middot;
+                <a href="https://github.com/hxlnt/astrocade/issues/3" target="new">Import BMP</a> &middot;
+                <a href="https://github.com/hxlnt/astrocade/issues/5" target="new">Touch support</a>
             </p>
-            <p>Upload assembly source
-                <input type="file" id="uploadjs" name="uploadjs" disabled />
-            </p>
-            <p>Import BMP
-                    <input type="file" id="uploadjs" name="uploadjs" disabled />
-                </p>
-            <p>Contribute to this open-source project or find more Bally Astrocade demos and dev tools on <a href="https://github.com/hxlnt/astrocade" target="new">GitHub</a>.</p>
             <BR>
-            <p>&#9790;:\ 2018 <a href="http://www.nobadmemories.com" target="new">hxlnt</a></p>
+            <p>&#9790;:\ 2018
+                <a href="http://www.nobadmemories.com" target="new">hxlnt</a>
+            </p>
         </div>
     </div>
 

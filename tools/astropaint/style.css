@@ -1,0 +1,116 @@
+#screen,
+#palettecontainer,
+h1 {
+    margin: 1.25vw;
+}
+
+input[type='checkbox'] {
+    width: 1.2vw;
+    height: 1.2vw;
+    padding: 1px;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: 2px;
+    *overflow: hidden;
+}
+
+html {
+    background: rgba(136, 136, 252, 1);
+    background: -webkit-linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
+    ;
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
+    ;
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(136, 136, 252, 0.7), rgba(136, 136, 252, 1));
+    ;
+    /* Standard syntax */
+    font-family: "Segoe UI", system-ui;
+    height: 100%;
+    font-size: 1vw;
+}
+
+h1 {
+    font-family: 'Sniglet', cursive;
+    ;
+    font-size: 4vw;
+    color: rgb(77, 64, 196);
+    /* text-decoration: underline  rgba(243, 89, 62, 1); */
+    line-height: 4.5vw;
+    /* text-shadow: 0 0 0.75vw rgb(77, 64, 196); */
+}
+
+p,
+button {
+    font-family: "Segoe UI", system-ui;
+    font-size: 0.8vw;
+    font-weight: 600;
+}
+
+label {
+    display: block;
+}
+
+sup {
+    margin-left: -.5vw;
+    text-decoration: none;
+}
+
+.sublabel {
+    padding-left: 1.2vw;
+}
+
+#screen {
+    background-color: black;
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    width: 64vw;
+    height: 40.8vw;
+    box-shadow: 8px 8px 0 0 rgb(77, 64, 196);
+}
+
+.pixel {
+    box-sizing: border-box;
+    width: calc(0.4vw);
+    height: calc(0.4vw);
+    border: 0.25px solid #0e0e0e;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+}
+
+#palettecontainer {
+    padding: 20px;
+    background: rgba(243, 89, 62, 1);
+    box-shadow: 8px 8px 0 0 rgb(77, 64, 196);
+}
+
+#field {
+    width: 320px;
+    height: 204px;
+}
