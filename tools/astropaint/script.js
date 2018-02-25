@@ -487,7 +487,7 @@ function setuppal1(){
     $("#right03").spectrum({
         showPaletteOnly: true,
         showPalette: true,
-        color: astrocadePalette[0x09],
+        color: astrocadePalette[0x0B],
         showPaletteOnly: true,
         hideAfterPaletteSelect: true,
         hide: function(color) {
