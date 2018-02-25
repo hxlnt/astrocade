@@ -29,6 +29,11 @@ To make games and software for the Bally Astrocade, grab the tools listed below.
 
 ![Screenshot of VS Code with Z80 syntax highlighting](etc/vscode.png)
 
+### Tools for graphics
+The `tools` folder contains source code for Astropaint, a browser-based tool for creating Astrocade background graphics. You can also demo it online [here](https://cdn.rawgit.com/hxlnt/astrocade/23cbe2a0/tools/astropaint/index.html). You'll be able to draw a screen like this one, which conforms to the graphic limitations of the Astrocade, and then export the drawing as Z80 assembly.
+
+![Screenshot of Astrocade](etc/paint900.jpeg)
+
 ### Tools for assembling and testing code
 1. The Zmac assembler for [Windows](http://www.ballyalley.com/ml/ml_tools/Zmac13_win32.zip) or [Linux](http://www.ballyalley.com/ml/ml_tools/zmac-linux.zip). There are different versions of this assembler floating around online, but this particular version is the one used for many tutorials and source code samples, including my own. If you choose a different Z80 assembler, do note that macros, input rules, and other assembler-specific features will differ and code examples will need to be modified accordingly.
 2. Once your code is successfully assembled into a binary file, you can test it in the Astrocade emulator inside [MAME](https://github.com/mamedev/mame/releases).
