@@ -125,12 +125,12 @@ $("input[id='gridtoggle']").on("click", function () {
 });
 
 // Click handler for turning on individual pixel
-document.getElementById("screen").addEventListener("pointerdown", function (e) {
+document.getElementById("screen").addEventListener("mousedown", function (e) {
     if (e.target && e.target.matches("div.pixel")) { colorPixel(e) }
 });
 
 // Mouseover handler for click-and-drag drawing
-document.getElementById("screen").addEventListener("pointerover", function (e) {
+document.getElementById("screen").addEventListener("mouseover", function (e) {
     if (e.target && e.target.matches("div.pixel") && (e.buttons == 1)) { colorPixel(e) }
 });
 
