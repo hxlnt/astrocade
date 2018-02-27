@@ -30,7 +30,7 @@ To make games and software for the Bally Astrocade, grab the tools listed below.
 ![Screenshot of VS Code with Z80 syntax highlighting](etc/vscode.png)
 
 ### Tools for graphics
-The `tools` folder contains source code for Astropaint, a browser-based tool for creating Astrocade background graphics. You can also demo it online [here](https://cdn.rawgit.com/hxlnt/astrocade/23cbe2a0/tools/astropaint/index.html). You'll be able to draw a screen like this one, which conforms to the graphic limitations of the Astrocade, and then export the drawing as Z80 assembly.
+The `tools` folder contains source code for Astropaint, a browser-based tool for creating Astrocade background graphics. You can also demo it online [here](https://rawgit.com/hxlnt/astrocade/master/tools/astropaint/index.html). You'll be able to draw a screen like this one, which conforms to the graphic limitations of the Astrocade, and then export the drawing as Z80 assembly.
 
 ![Screenshot of Astrocade](etc/paint900.jpeg)
 
