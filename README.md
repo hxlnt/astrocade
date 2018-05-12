@@ -1,6 +1,6 @@
 # 🍄 ASTROCADE DEV 🍄
 
-Let's make cute software for the Bally Astrocade!
+Hello! Let's make cute software for the Bally Astrocade!
 
 ## Introduction
 I'm teaching myself how to develop for the slightly-obscure Bally Astrocade, an 8-bit home computer/game console released in the late 1970s. The Astrocade boasts impressive (for its day) specs: a 1.7MHz Z80 8-bit CPU, 4KB RAM, 256 available colors, 3 square-wave audio channels, and 4 controller ports. If you want to learn alongside me, this repo will contain the demos I create as well as any tools I create to make my workflow easier and more fun. 
@@ -10,13 +10,13 @@ I'm teaching myself how to develop for the slightly-obscure Bally Astrocade, an 
 - [Development tools](#development-tools)
 - [Additional learning resources](#additional-learning-resources)
 
-![Sketch depicting Bally Astrocade](etc/bally.png)
-
 ## Examples
 - The `demos` folder contains my Astrocade experiments (highly-commented source code and binaries). Compiling demos from source requires `HVGLIB.H` and the Zmac assembler. (See [Development tools](#development-tools) for more information.)
     - `01-hellowords` is baby's first Astrocade homebrew, simply displaying text that reads, "HELLO, WORLDS!"
     - `02-telephone` is an audio demo of a telephone ringing that also features background graphics.
-    - `03-horcbpal` demonstrates interactive updating of the _hor_-izontal _c_-olor _b_-oundary (HORCB) by turning the player 1 controller knob.
+    - `03-horcbpal` demonstrates interactive updating of the *hor*izontal *c*olor *b*oundary (HORCB) by turning the player 1 controller knob.
+
+![Sketch depicting Bally Astrocade](etc/bally.png)
 
 ## Development tools
 
