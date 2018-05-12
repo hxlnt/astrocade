@@ -18,6 +18,7 @@ I'm teaching myself how to develop for the slightly-obscure Bally Astrocade, an 
 - The `demos` folder contains my Astrocade experiments (highly-commented source code and binaries). Compiling demos from source requires `HVGLIB.H` and the Zmac assembler. (See [Development toolchain](#development-toolchain) for more information.)
     - `01-hellowords` is baby's first Astrocade homebrew, simply displaying text that reads, "HELLO, WORLDS!"
     - `02-telephone` is an audio demo of a telephone ringing that also features background graphics.
+    - `03-horcbpal` demonstrates interactive updating of the _hor_-izontal _c_-olor _b_-oundary (HORCB) by turning the player 1 controller knob.
 - The `tools` folder contains tools and scripts I've created that may be of use for Astrocade software development.
 
 ## Development toolchain
