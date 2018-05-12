@@ -1,4 +1,4 @@
-                                    ; "Hello Input" demo 2018 hxlnt
+                                    ; "HORCB Pal" demo 2018 hxlnt
                                     ; Inspired by Michael Garber's Color Picker
                                     ; http://ballyalley.com/ml/ml_homebrew/colorpicker.asm
                                     ; Assemble with Zmac 1.3
