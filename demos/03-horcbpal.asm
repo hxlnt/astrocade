@@ -45,30 +45,30 @@ Loop:       IN      A,(POT0)        ; Let A = controller 1 knob value
 Palettes:   DB      $F4,$1C,$1F,$5F ; Left color palette (11b, 10b, 01b, 00b)
             DB      $ED,$CD,$D5,$8E ; Right color palette (11b, 10b, 01b, 00b)
 UpdateDisp: DI                      ; Disable interrupts
-		    PUSH    AF              ; Push AF to SP
-		    LD      C,A             ; Get first hex digit from knob value
-		    SRL     C               ; ...
-		    SRL     C               ; ...
-		    SRL     C               ; ...
-		    SRL     C               ; ...
-		    LD      B,0             ; Display first hex digit from knob value
-		    LD      HL,Hex          ; ... Load HL with address Hex
-		    ADD     HL,BC           ; ... Offset Hex by BC to get first hex digit
-		    LD      A,(HL)          ; ... Load A with first hex digit
-		    LD      C,00000100b     ; ... Load C with string options
-		    LD      D,40            ; ... Load D with string Y-coordinate
-		    LD      E,120           ; ... Load E with X-coordinate
+            PUSH    AF              ; Push AF to SP
+	    LD      C,A             ; Get first hex digit from knob value
+	    SRL     C               ; ...
+	    SRL     C               ; ...
+	    SRL     C               ; ...
+	    SRL     C               ; ...
+	    LD      B,0             ; Display first hex digit from knob value
+	    LD      HL,Hex          ; ... Load HL with address Hex
+	    ADD     HL,BC           ; ... Offset Hex by BC to get first hex digit
+	    LD      A,(HL)          ; ... Load A with first hex digit
+	    LD      C,00000100b     ; ... Load C with string options
+	    LD      D,40            ; ... Load D with string Y-coordinate
+	    LD      E,120           ; ... Load E with X-coordinate
             SYSTEM  (CHRDIS)        ; ... Display first digit
-		    POP     AF              ; Pop AF off SP
-		    AND     $0F             ; Get second hex digit from knob value             
-		    LD      C,A             ; ...
-    		LD      B,0             ; Display second hex digit from knob value
-	    	LD      HL,Hex          ; ... Load HL with address Hex
-		    ADD     HL,BC           ; ... Offset Hex by BC to get second hex digit
-    		LD      A,(HL)          ; ... Load A with second hex digit
-	    	LD      C,00000100b     ; ... Load C with string options
-		    LD      D,40            ; ... Load D with Y-coordinate
-    		LD      E,128           ; ... Load E with X-coordinate
+	    POP     AF              ; Pop AF off SP
+	    AND     $0F             ; Get second hex digit from knob value             
+	    LD      C,A             ; ...
+	    LD      B,0             ; Display second hex digit from knob value
+	    LD      HL,Hex          ; ... Load HL with address Hex
+	    ADD     HL,BC           ; ... Offset Hex by BC to get second hex digit
+	    LD      A,(HL)          ; ... Load A with second hex digit
+	    LD      C,00000100b     ; ... Load C with string options
+	    LD      D,40            ; ... Load D with Y-coordinate
+	    LD      E,128           ; ... Load E with X-coordinate
             SYSTEM  (CHRDIS)        ; ... Display second digit
             LD      A,(FrameCount)  ; Increment frame counter
             INC     A               ; ...
