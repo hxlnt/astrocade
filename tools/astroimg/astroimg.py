@@ -265,34 +265,35 @@ def z80Exporter(newimg):
     print(pixelMap[0,0])
     print(palette[0])
     for y in range(img.size[1]):
-        for x in range(img.size[0]/4):
+        #for x in range(img.size[0]/4):
+        x=0
+        while x <= 156:
             try:
-                if x < adjustedmedian:
+                if x <= adjustedmedian:
                     if str(pixelMap[x,y]) == palette[1]:
                         currentbyte = currentbyte + 0x40
                     if str(pixelMap[x,y]) == palette[2]:
                         currentbyte = currentbyte + 0x80
                     if str(pixelMap[x,y]) == palette[3]:
                         currentbyte = currentbyte + 0xC0
-                    if str(pixelMap[x+1,y+1]) == palette[1]:
+                    if str(pixelMap[x+1,y]) == palette[1]:
                         currentbyte = currentbyte + 0x10
-                    if str(pixelMap[x+1,y+1]) == palette[2]:
+                    if str(pixelMap[x+1,y]) == palette[2]:
                         currentbyte = currentbyte + 0x20
-                    if str(pixelMap[x+1,y+1]) == palette[3]:
+                    if str(pixelMap[x+1,y]) == palette[3]:
                         currentbyte = currentbyte + 0x30
-                    if str(pixelMap[x+2,y+2]) == palette[1]:
+                    if str(pixelMap[x+2,y]) == palette[1]:
                         currentbyte = currentbyte + 0x04
-                    if str(pixelMap[x+2,y+2]) == palette[2]:
+                    if str(pixelMap[x+2,y]) == palette[2]:
                         currentbyte = currentbyte + 0x08
-                    if str(pixelMap[x+2,y+2]) == palette[3]:
+                    if str(pixelMap[x+2,y]) == palette[3]:
                         currentbyte = currentbyte + 0x0C
-                    if str(pixelMap[x+3,y+3]) == palette[1]:
+                    if str(pixelMap[x+3,y]) == palette[1]:
                         currentbyte = currentbyte + 0x01
-                    if str(pixelMap[x+3,y+3]) == palette[2]:
+                    if str(pixelMap[x+3,y]) == palette[2]:
                         currentbyte = currentbyte + 0x02
-                    if str(pixelMap[x+3,y+3]) == palette[3]:
+                    if str(pixelMap[x+3,y]) == palette[3]:
                         currentbyte = currentbyte + 0x03
-                    export.append(currentbyte)
                 else:
                     if str(pixelMap[x,y]) == palette[5]:
                         currentbyte = currentbyte + 0x40
@@ -300,30 +301,30 @@ def z80Exporter(newimg):
                         currentbyte = currentbyte + 0x80
                     if str(pixelMap[x,y]) == palette[7]:
                         currentbyte = currentbyte + 0xC0
-                    if str(pixelMap[x+1,y+1]) == palette[5]:
+                    if str(pixelMap[x+1,y]) == palette[5]:
                         currentbyte = currentbyte + 0x10
-                    if str(pixelMap[x+1,y+1]) == palette[6]:
+                    if str(pixelMap[x+1,y]) == palette[6]:
                         currentbyte = currentbyte + 0x20
-                    if str(pixelMap[x+1,y+1]) == palette[7]:
+                    if str(pixelMap[x+1,y]) == palette[7]:
                         currentbyte = currentbyte + 0x30
-                    if str(pixelMap[x+2,y+2]) == palette[5]:
+                    if str(pixelMap[x+2,y]) == palette[5]:
                         currentbyte = currentbyte + 0x04
-                    if str(pixelMap[x+2,y+2]) == palette[6]:
+                    if str(pixelMap[x+2,y]) == palette[6]:
                         currentbyte = currentbyte + 0x08
-                    if str(pixelMap[x+2,y+2]) == palette[7]:
+                    if str(pixelMap[x+2,y]) == palette[7]:
                         currentbyte = currentbyte + 0x0C
-                    if str(pixelMap[x+3,y+3]) == palette[5]:
+                    if str(pixelMap[x+3,y]) == palette[5]:
                         currentbyte = currentbyte + 0x01
-                    if str(pixelMap[x+3,y+3]) == palette[6]:
+                    if str(pixelMap[x+3,y]) == palette[6]:
                         currentbyte = currentbyte + 0x02
-                    if str(pixelMap[x+3,y+3]) == palette[7]:
+                    if str(pixelMap[x+3,y]) == palette[7]:
                         currentbyte = currentbyte + 0x03
-                    export.append(currentbyte)
             except:
                 pass
             finally:
-                currentbyte = 0x00
                 x = x+4
+                export.append(currentbyte)
+                currentbyte = 0x00
     newFileByteArray = bytearray(export)
     newFile = open("filename.bin", "wb")
     newFile.write(newFileByteArray)
