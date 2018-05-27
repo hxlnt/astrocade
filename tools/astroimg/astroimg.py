@@ -1,5 +1,6 @@
 from PIL import Image
 import math
+import os.path
 import statistics
 import sys
 
@@ -85,7 +86,6 @@ def eightColorDownsample(img):
                 palette.add("#000000")
                 blackxpos.add(x)
                 blackcounter += 1
-    img.show()
 
 def colorBoundaryFinder(img):
     global redcounter, yellowcounter, greencounter, cyancounter, bluecounter, magentacounter, whitecounter, blackcounter, redxpos, yellowxpos, greenxpos, cyanxpos, bluexpos, magentaxpos, whitexpos, blackxpos, imgleft, imgright, adjustedmedian
@@ -249,8 +249,91 @@ def colorSwapper(color_to_keep, color_to_roll, img):
             if pixelMap[x,y] == color_to_roll:
                 pixelMap[x,y] = color_to_keep
 
+def z80Exporter(newimg):
+    pixelMap = newimg.load()
+    currentbyte = 0x00
+    export = []
+    palette = [leftcolors[4][0], leftcolors[5][0], leftcolors[6][0], leftcolors[7][0], rightcolors[4][0], rightcolors[5][0], rightcolors[6][0], rightcolors[7][0]]
+    palette = [pal.replace('red', '(255, 0, 0)') for pal in palette]
+    palette = [pal.replace('magenta', '(255, 0, 255)') for pal in palette]
+    palette = [pal.replace('blue', '(0, 0, 255)') for pal in palette]
+    palette = [pal.replace('cyan', '(0, 255, 255)') for pal in palette]
+    palette = [pal.replace('green', '(0, 255, 0)') for pal in palette]
+    palette = [pal.replace('yellow', '(255, 255, 0)') for pal in palette]
+    palette = [pal.replace('black', '(0, 0, 0)') for pal in palette]
+    palette = [pal.replace('white', '(255, 255, 255)') for pal in palette]
+    print(pixelMap[0,0])
+    print(palette[0])
+    for y in range(img.size[1]):
+        for x in range(img.size[0]/4):
+            try:
+                if x < adjustedmedian:
+                    if str(pixelMap[x,y]) == palette[1]:
+                        currentbyte = currentbyte + 0x40
+                    if str(pixelMap[x,y]) == palette[2]:
+                        currentbyte = currentbyte + 0x80
+                    if str(pixelMap[x,y]) == palette[3]:
+                        currentbyte = currentbyte + 0xC0
+                    if str(pixelMap[x+1,y+1]) == palette[1]:
+                        currentbyte = currentbyte + 0x10
+                    if str(pixelMap[x+1,y+1]) == palette[2]:
+                        currentbyte = currentbyte + 0x20
+                    if str(pixelMap[x+1,y+1]) == palette[3]:
+                        currentbyte = currentbyte + 0x30
+                    if str(pixelMap[x+2,y+2]) == palette[1]:
+                        currentbyte = currentbyte + 0x04
+                    if str(pixelMap[x+2,y+2]) == palette[2]:
+                        currentbyte = currentbyte + 0x08
+                    if str(pixelMap[x+2,y+2]) == palette[3]:
+                        currentbyte = currentbyte + 0x0C
+                    if str(pixelMap[x+3,y+3]) == palette[1]:
+                        currentbyte = currentbyte + 0x01
+                    if str(pixelMap[x+3,y+3]) == palette[2]:
+                        currentbyte = currentbyte + 0x02
+                    if str(pixelMap[x+3,y+3]) == palette[3]:
+                        currentbyte = currentbyte + 0x03
+                    export.append(currentbyte)
+                else:
+                    if str(pixelMap[x,y]) == palette[5]:
+                        currentbyte = currentbyte + 0x40
+                    if str(pixelMap[x,y]) == palette[6]:
+                        currentbyte = currentbyte + 0x80
+                    if str(pixelMap[x,y]) == palette[7]:
+                        currentbyte = currentbyte + 0xC0
+                    if str(pixelMap[x+1,y+1]) == palette[5]:
+                        currentbyte = currentbyte + 0x10
+                    if str(pixelMap[x+1,y+1]) == palette[6]:
+                        currentbyte = currentbyte + 0x20
+                    if str(pixelMap[x+1,y+1]) == palette[7]:
+                        currentbyte = currentbyte + 0x30
+                    if str(pixelMap[x+2,y+2]) == palette[5]:
+                        currentbyte = currentbyte + 0x04
+                    if str(pixelMap[x+2,y+2]) == palette[6]:
+                        currentbyte = currentbyte + 0x08
+                    if str(pixelMap[x+2,y+2]) == palette[7]:
+                        currentbyte = currentbyte + 0x0C
+                    if str(pixelMap[x+3,y+3]) == palette[5]:
+                        currentbyte = currentbyte + 0x01
+                    if str(pixelMap[x+3,y+3]) == palette[6]:
+                        currentbyte = currentbyte + 0x02
+                    if str(pixelMap[x+3,y+3]) == palette[7]:
+                        currentbyte = currentbyte + 0x03
+                    export.append(currentbyte)
+            except:
+                pass
+            finally:
+                currentbyte = 0x00
+                x = x+4
+    newFileByteArray = bytearray(export)
+    newFile = open("filename.bin", "wb")
+    newFile.write(newFileByteArray)
+    newFile.close()
 
-img = Image.open(sys.argv[1])
+try:
+    img = Image.open(sys.argv[1])
+except:
+    print("Please specify a valid filepath for an image to convert. Ex: python astroimg.py ../myphoto.jpg")
+    sys.exit(0)
 img = img.resize([160,102],Image.ANTIALIAS)
 eightColorDownsample(img)
 colorBoundaryFinder(img)
@@ -273,3 +356,4 @@ newimg = Image.new("RGB", (160,102))
 newimg.paste(imgleft, (0,0))
 newimg.paste(imgright, (adjustedmedian, 0))
 newimg.show()
+z80Exporter(newimg)
