@@ -1,102 +1,204 @@
-DB $6A, $95, $55, $55, $55, $55, $55, $55, $55, $55, $55, $55, $AF, $FE, $AA, $AA, $AB, $FF, $FF, $FF, $FF, $FF, $FE, $2A, $AA, $AA, $AA, $AA, $AA, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $AA, $95, $55, $55, $55, $55, $55, $55, $55, $55, $55, $56, $BF, $FE, $AA, $AA, $AA, $7F, $FF, $FF, $FF, $FF, $FF, $AA, $A8, $02, $AA, $AA, $AA, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $6A, $A5, $61, $55, $55, $55, $55, $55, $55, $55, $55, $5A, $BF, $FA, $AA, $AA, $AA, $AF, $FF, $FF, $FF, $FF, $FF, $02, $AA, $AA, $AA, $AA, $A2, $A8, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $AA, $95, $55, $55, $55, $55, $55, $55, $55, $55, $55, $59, $BF, $FA, $AA, $AA, $AA, $97, $FF, $FF, $FF, $FF, $FF, $C2, $AA, $AA, $0A, $AA, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $AA, $A4, $20, $00, $00, $10, $40, $00, $14, $41, $55, $5A, $BF, $EA, $AA, $AA, $AA, $55, $FF, $FF, $FF, $FF, $FF, $E0, $08, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $AA, $80, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0A, $BF, $EA, $AA, $AA, $A8, $55, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C2, $AA, $AA, $AA, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $AA, $80, $00, $00, $00, $00, $00, $00, $00, $00, $A2, $8A, $BF, $EA, $AA, $AA, $A0, $55, $FF, $FF, $FF, $FF, $FF, $FB, $FF, $E8, $2A, $88, $0A, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $AA, $00, $00, $01, $00, $00, $00, $00, $00, $03, $AA, $A8, $3F, $EA, $AA, $AA, $A0, $55, $7F, $FF, $FF, $FF, $FF, $FB, $FF, $A8, $A0, $AA, $0A, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $AA, $00, $00, $03, $C0, $00, $00, $00, $00, $02, $AA, $2A, $BF, $EA, $AA, $AA, $AA, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $02, $82, $AA, $0A, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $A8, $00, $00, $07, $D0, $00, $00, $00, $00, $00, $A2, $EA, $AF, $EA, $AA, $AA, $A0, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $02, $AA, $AA, $0A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $A8, $00, $00, $07, $70, $00, $00, $00, $00, $00, $04, $0A, $AF, $EA, $AA, $AA, $A0, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $00, $A2, $AA, $8A, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $A8, $00, $00, $07, $90, $00, $00, $00, $00, $0A, $00, $CA, $AB, $EA, $AA, $AA, $A2, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $02, $82, $AA, $8A, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A8, $00
-DB $AA, $00, $00, $16, $80, $00, $00, $00, $08, $02, $12, $00, $2B, $EA, $AA, $AA, $A0, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $02, $8A, $A0, $08, $0A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A8, $00
-DB $AA, $00, $00, $15, $40, $00, $00, $00, $00, $00, $CA, $A8, $2A, $EA, $AA, $AA, $A0, $55, $55, $FF, $FF, $FF, $FF, $FF, $FF, $00, $0A, $A0, $28, $2A, $AA, $AA, $EA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $A6, $00, $00, $01, $00, $00, $00, $00, $02, $00, $AA, $A8, $2A, $AB, $FE, $AA, $A0, $55, $55, $FF, $FF, $FF, $FF, $FF, $FF, $28, $02, $A0, $2A, $A2, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $6A, $00, $00, $00, $00, $00, $00, $00, $0F, $80, $20, $00, $2A, $AA, $BF, $AA, $A0, $55, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $0A, $AA, $A2, $0A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $A5, $A9, $55, $AA, $9A, $A5, $AA, $A6, $56, $AA, $AA, $AA, $A6, $AA, $AE, $AA, $A0, $5F, $FF, $5F, $FF, $FF, $FF, $FF, $FF, $00, $00, $00, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $A6, $AA, $A9, $55, $55, $55, $55, $55, $55, $55, $55, $55, $55, $6A, $FF, $AA, $A0, $5A, $AA, $55, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $AA, $56, $A5, $55, $55, $55, $55, $55, $55, $55, $55, $55, $55, $6B, $8F, $FA, $A0, $6B, $FF, $F6, $FF, $FF, $FF, $FF, $FA, $80, $82, $2A, $2A, $A2, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
-DB $69, $96, $96, $55, $55, $55, $55, $55, $55, $55, $55, $55, $55, $6A, $8F, $FA, $A0, $FF, $FF, $FE, $FF, $FF, $FF, $FF, $FA, $A0, $8A, $AA, $8A, $82, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $6A, $95, $95, $55, $55, $55, $55, $55, $55, $55, $55, $55, $55, $6A, $83, $FA, $A8, $FD, $7F, $FF, $FF, $FF, $FF, $FF, $F8, $22, $82, $28, $AA, $02, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $9A, $56, $A5, $55, $95, $55, $55, $55, $55, $55, $55, $55, $55, $6A, $AB, $EA, $AA, $5D, $7F, $7F, $FF, $FF, $FF, $FF, $FE, $80, $88, $80, $AA, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $99, $56, $AA, $AA, $95, $7F, $95, $55, $55, $55, $55, $55, $55, $AA, $AA, $AA, $AA, $5D, $5F, $7F, $5F, $FF, $FF, $FF, $FE, $AA, $A0, $2A, $80, $82, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $AA, $AA, $AA, $5F, $FF, $FF, $A5, $55, $55, $55, $55, $55, $55, $AA, $AA, $AA, $AA, $5F, $D5, $FA, $AF, $FF, $FF, $FF, $FE, $80, $AA, $AA, $08, $2A, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $AA, $EA, $AA, $FF, $FF, $FF, $A5, $55, $55, $55, $55, $55, $55, $6A, $AA, $AA, $AA, $95, $55, $AA, $A7, $FF, $FF, $FF, $FE, $A0, $00, $0A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $97, $EA, $AA, $FF, $D6, $BF, $95, $95, $55, $55, $55, $55, $55, $6A, $AA, $AA, $AA, $95, $55, $AA, $AB, $FF, $FF, $FF, $FE, $A2, $80, $AA, $2A, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $9F, $FB, $EA, $FF, $D6, $7F, $A5, $55, $55, $55, $55, $55, $55, $6A, $AA, $AA, $A2, $A5, $55, $AA, $A7, $FF, $FF, $FF, $FF, $A2, $A8, $AA, $28, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $97, $FA, $AA, $FF, $6A, $5F, $E5, $59, $55, $55, $55, $55, $55, $6A, $AA, $AA, $A0, $A5, $9A, $A9, $57, $FF, $FF, $FF, $FF, $A8, $2A, $8A, $AA, $A2, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $97, $FA, $AA, $BF, $AA, $9F, $E9, $59, $59, $55, $55, $55, $55, $6A, $AA, $AA, $AA, $A5, $59, $55, $57, $FF, $FF, $FF, $FF, $AA, $02, $82, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $67, $FA, $AA, $BF, $E9, $7F, $E5, $56, $A9, $55, $55, $55, $55, $6A, $AA, $AA, $AA, $55, $55, $55, $57, $FF, $FF, $FF, $FF, $E2, $28, $22, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $A7, $FE, $AA, $BF, $FF, $FF, $E9, $56, $A6, $55, $55, $55, $65, $6A, $AA, $AA, $AA, $95, $55, $55, $5F, $FF, $FF, $FF, $FF, $E0, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $A7, $FE, $AA, $BF, $FF, $FF, $E9, $56, $A9, $5A, $5A, $59, $A6, $6A, $AA, $AA, $AA, $A5, $55, $55, $5F, $FF, $FF, $FF, $FF, $EA, $AA, $00, $82, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $67, $FE, $AA, $BF, $FF, $FF, $F9, $55, $9A, $6A, $A6, $95, $5A, $AA, $AA, $AA, $A2, $55, $55, $55, $5F, $FF, $FF, $FF, $FF, $EA, $0A, $A8, $08, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $A7, $FE, $AA, $BF, $FF, $FF, $F9, $55, $AA, $56, $96, $56, $9A, $6A, $AA, $AA, $A0, $55, $55, $55, $5F, $FF, $FF, $FF, $FF, $EA, $22, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $A6, $FE, $AA, $AF, $FF, $FA, $A9, $95, $A5, $55, $5A, $AA, $AA, $5A, $AA, $AA, $A0, $55, $55, $55, $5F, $FF, $FF, $FF, $FF, $EA, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $45, $FF, $AA, $AF, $FF, $FF, $E9, $55, $65, $69, $5A, $AA, $AA, $AA, $AA, $AA, $A0, $55, $55, $55, $5F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $2A, $A2, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $A9, $FF, $AA, $AA, $FF, $FF, $FA, $55, $55, $A9, $6A, $69, $AA, $9A, $AA, $AA, $A0, $55, $55, $55, $5F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $85, $FF, $AA, $AF, $FF, $FF, $FA, $55, $55, $56, $56, $AA, $6A, $A6, $AA, $AA, $A0, $55, $55, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $41, $EF, $FF, $AF, $FF, $FF, $FD, $69, $55, $55, $96, $95, $55, $56, $AA, $AA, $A0, $55, $65, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $E1, $EF, $AA, $AF, $FF, $FF, $FE, $55, $55, $55, $55, $55, $A9, $6A, $AA, $AA, $A0, $7D, $69, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $F2, $FF, $AA, $AF, $FF, $FF, $FE, $A5, $55, $55, $55, $56, $55, $59, $AA, $AA, $A0, $55, $5A, $55, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AE, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FE, $FF, $FE, $AF, $FF, $FF, $FE, $55, $55, $55, $55, $55, $65, $55, $6A, $AA, $A0, $55, $55, $57, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AE, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FE, $FF, $FF, $AF, $FF, $FF, $FE, $55, $55, $55, $55, $55, $55, $55, $5A, $AA, $A0, $55, $A5, $57, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $BA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $9F, $FF, $EA, $AF, $FF, $FF, $FE, $95, $55, $55, $55, $55, $55, $55, $5A, $AA, $A2, $95, $55, $5F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $FA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $BF, $EE, $AF, $FF, $FF, $FF, $55, $55, $55, $55, $55, $55, $55, $5F, $AA, $A0, $55, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $EA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FA, $AF, $FF, $AF, $FF, $FF, $FF, $99, $55, $55, $55, $55, $55, $55, $7E, $AA, $A0, $55, $67, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AB, $EA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $EB, $FF, $EF, $FF, $FF, $FF, $95, $55, $55, $55, $55, $55, $56, $FE, $AA, $A0, $55, $A9, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AF, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FB, $FF, $FF, $FF, $FF, $FF, $95, $55, $55, $55, $55, $55, $6F, $FA, $AA, $A0, $56, $A5, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $BF, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $95, $55, $55, $55, $55, $56, $FF, $EA, $AA, $AA, $AA, $25, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $FE, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $95, $55, $55, $55, $55, $5F, $FF, $EA, $AA, $AA, $86, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FA, $AB, $FF, $FF, $FF, $FE, $D5, $55, $55, $55, $55, $FF, $FF, $EA, $AA, $AA, $05, $01, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $EA, $BF, $FF, $FF, $FF, $FF, $E6, $55, $55, $55, $5B, $FF, $FF, $AA, $AA, $AA, $04, $03, $EF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $AB, $FF, $FF, $FF, $FF, $FF, $E6, $AA, $AA, $AA, $7F, $FF, $FF, $AA, $AA, $A2, $80, $0B, $9F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FA, $A7, $80, $0B, $FF, $FF, $FF, $AA, $AA, $00, $80, $5E, $5F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $BF, $EA, $BF, $FF, $FF, $FF, $AA, $A8, $00, $00, $5D, $1F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $AF, $FF, $FF, $FF, $FF, $FF, $FF, $EB, $FE, $AB, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $01, $5D, $1F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $AF, $BF, $FF, $FF, $FF, $FF, $E5, $5F, $DA, $AF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $00, $5D, $17, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $BF, $FF, $FF, $FF, $FF, $FE, $97, $FE, $A9, $FF, $FF, $FF, $FF, $FF, $8A, $AA, $AA, $54, $5D, $1E, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FF, $FF, $FE, $6B, $EA, $55, $FF, $FF, $FF, $FF, $FF, $E2, $AA, $A0, $55, $5D, $66, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FF, $FF, $FF, $6B, $99, $6B, $FF, $FF, $FF, $FF, $FF, $E0, $8A, $A2, $55, $55, $65, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $DA, $AF, $FF, $FF, $FF, $FF, $FF, $F8, $8A, $A0, $55, $5A, $55, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F8, $22, $A0, $55, $56, $D6, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FF, $FE, $FA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $02, $A0, $55, $56, $55, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FF, $AA, $BA, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $02, $A0, $15, $59, $57, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FF, $AE, $AB, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $82, $00, $00, $55, $57, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $BA, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FA, $FA, $AF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C0, $00, $00, $55, $5F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $BE, $AA, $AA, $AA
-DB $FF, $FF, $FF, $EF, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F0, $08, $01, $55, $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $BF, $AA, $AA, $AA
-DB $FF, $FF, $FF, $FE, $AA, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $00, $00, $55, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $BF, $EA, $AA, $AA
-DB $FF, $FF, $FF, $FE, $AB, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $E0, $00, $4B, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $AF, $CA, $AA, $AA
-DB $FF, $FF, $FE, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FC, $40, $AB, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $AF, $FA, $AA, $AA
-DB $FF, $FF, $BE, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $D5, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $AF, $F2, $AA, $AA
-DB $FF, $FF, $EA, $AA, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AF, $FE, $AA, $AA
-DB $FF, $FF, $AA, $AB, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AF, $3F, $AA, $AA
-DB $FF, $FE, $AA, $AF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AF, $FF, $AA, $AA
-DB $FF, $FE, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $97, $FF, $EA, $AA
-DB $FA, $AA, $AA, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $5B, $FF, $EA, $AA
-DB $EA, $AA, $AB, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $9B, $FF, $FA, $AA
-DB $AA, $AA, $AB, $FE, $AA, $AA, $A6, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $FF, $FA, $AA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $A6, $AA, $5B, $FD, $FE, $AA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FB, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $55, $65, $55, $5B, $FF, $CE, $AA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FB, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $A9, $55, $55, $55, $56, $F7, $CE, $AA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FB, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $99, $55, $55, $55, $57, $FF, $FF, $AA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $65, $55, $55, $57, $FF, $7F, $AA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $BA, $55, $55, $57, $57, $FF, $FF, $AA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $55, $56, $55, $57, $FD, $FF, $EA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C3, $FF, $FE, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $A9, $55, $55, $55, $57, $FF, $FF, $EA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $1F, $FF, $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $E9, $55, $55, $55, $57, $FF, $FF, $EA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F9, $6D, $55, $57, $7F, $FF, $FF, $CA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C5, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F9, $5D, $5F, $5F, $FF, $FF, $FC, $FA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $1D, $7F, $EF, $BF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $7F, $7F, $FF, $FF, $FF, $FD, $FA
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $5F, $EF, $AF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $7F, $FF, $FF, $F3, $7A
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C7, $EF, $BF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $7F, $FF, $FF, $F7, $3A
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F4, $EB, $BF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $FF, $FF, $DF, $FE
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FC, $2A, $BF, $AF, $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $7F, $FF, $FF, $FD, $FE
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $0E, $BF, $AF, $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $FE
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $0E, $BF, $AF, $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $DD, $FF, $FF, $F3, $FE
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A3, $FF, $FF, $FC, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C0, $BF, $AF, $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $FF, $FF, $7F, $FF, $FF, $FE
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $80, $03, $C0, $00, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $E0, $3E, $EA, $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $7F, $FF, $5F, $FF, $FF, $FF
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $80, $00, $00, $0A, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $E8, $3B, $EA, $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F5, $5F, $FF, $7F, $FF, $FF, $FF
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $80, $00, $00, $02, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F2, $83, $EA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F5, $47, $7F, $7F, $FF, $FF, $FF
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $80, $00, $00, $0A, $BF, $FF, $FF, $FF, $FF, $FF, $DF, $FF, $FA, $A3, $EA, $BF, $EF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FC, $51, $FF, $FF, $FF, $FF, $FF
-DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $80, $00, $00, $2A, $BF, $FF, $FF, $3F, $FF, $FF, $D7, $FF, $F8, $B7, $EA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $14, $7F, $5F, $FF, $FF, $FF
+DB $6A, $95, $55, $55, $55, $55, $55, $55, $55, $55, $55, $55, $AF, $FE, $AA, $AA, $AB, $FF, $FF, $FF
+DB $FF, $FF, $FE, $2A, $AA, $AA, $AA, $AA, $AA, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $AA, $95, $55, $55, $55, $55, $55, $55, $55, $55, $55, $56, $BF, $FE, $AA, $AA, $AA, $7F, $FF, $FF
+DB $FF, $FF, $FF, $AA, $A8, $02, $AA, $AA, $AA, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $6A, $A5, $61, $55, $55, $55, $55, $55, $55, $55, $55, $5A, $BF, $FA, $AA, $AA, $AA, $AF, $FF, $FF
+DB $FF, $FF, $FF, $02, $AA, $AA, $AA, $AA, $A2, $A8, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $AA, $95, $55, $55, $55, $55, $55, $55, $55, $55, $55, $59, $BF, $FA, $AA, $AA, $AA, $97, $FF, $FF
+DB $FF, $FF, $FF, $C2, $AA, $AA, $0A, $AA, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $AA, $A4, $20, $00, $00, $10, $40, $00, $14, $41, $55, $5A, $BF, $EA, $AA, $AA, $AA, $55, $FF, $FF
+DB $FF, $FF, $FF, $E0, $08, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $AA, $80, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0A, $BF, $EA, $AA, $AA, $A8, $55, $FF, $FF
+DB $FF, $FF, $FF, $FF, $FF, $C2, $AA, $AA, $AA, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $AA, $80, $00, $00, $00, $00, $00, $00, $00, $00, $A2, $8A, $BF, $EA, $AA, $AA, $A0, $55, $FF, $FF
+DB $FF, $FF, $FF, $FB, $FF, $E8, $2A, $88, $0A, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $AA, $00, $00, $01, $00, $00, $00, $00, $00, $03, $AA, $A8, $3F, $EA, $AA, $AA, $A0, $55, $7F, $FF
+DB $FF, $FF, $FF, $FB, $FF, $A8, $A0, $AA, $0A, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $AA, $00, $00, $03, $C0, $00, $00, $00, $00, $02, $AA, $2A, $BF, $EA, $AA, $AA, $AA, $55, $7F, $FF
+DB $FF, $FF, $FF, $FF, $FF, $02, $82, $AA, $0A, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $A8, $00, $00, $07, $D0, $00, $00, $00, $00, $00, $A2, $EA, $AF, $EA, $AA, $AA, $A0, $55, $7F, $FF
+DB $FF, $FF, $FF, $FF, $FF, $02, $AA, $AA, $0A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $A8, $00, $00, $07, $70, $00, $00, $00, $00, $00, $04, $0A, $AF, $EA, $AA, $AA, $A0, $55, $7F, $FF
+DB $FF, $FF, $FF, $FF, $FF, $00, $A2, $AA, $8A, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $A8, $00, $00, $07, $90, $00, $00, $00, $00, $0A, $00, $CA, $AB, $EA, $AA, $AA, $A2, $55, $7F, $FF
+DB $FF, $FF, $FF, $FF, $FF, $02, $82, $AA, $8A, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A8, $00
+DB $AA, $00, $00, $16, $80, $00, $00, $00, $08, $02, $12, $00, $2B, $EA, $AA, $AA, $A0, $55, $7F, $FF
+DB $FF, $FF, $FF, $FF, $FF, $02, $8A, $A0, $08, $0A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A8, $00
+DB $AA, $00, $00, $15, $40, $00, $00, $00, $00, $00, $CA, $A8, $2A, $EA, $AA, $AA, $A0, $55, $55, $FF
+DB $FF, $FF, $FF, $FF, $FF, $00, $0A, $A0, $28, $2A, $AA, $AA, $EA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $A6, $00, $00, $01, $00, $00, $00, $00, $02, $00, $AA, $A8, $2A, $AB, $FE, $AA, $A0, $55, $55, $FF
+DB $FF, $FF, $FF, $FF, $FF, $28, $02, $A0, $2A, $A2, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $6A, $00, $00, $00, $00, $00, $00, $00, $0F, $80, $20, $00, $2A, $AA, $BF, $AA, $A0, $55, $FF, $FF
+DB $FF, $FF, $FF, $FF, $FF, $0A, $AA, $A2, $0A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $A5, $A9, $55, $AA, $9A, $A5, $AA, $A6, $56, $AA, $AA, $AA, $A6, $AA, $AE, $AA, $A0, $5F, $FF, $5F
+DB $FF, $FF, $FF, $FF, $FF, $00, $00, $00, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $A6, $AA, $A9, $55, $55, $55, $55, $55, $55, $55, $55, $55, $55, $6A, $FF, $AA, $A0, $5A, $AA, $55
+DB $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $AA, $56, $A5, $55, $55, $55, $55, $55, $55, $55, $55, $55, $55, $6B, $8F, $FA, $A0, $6B, $FF, $F6
+DB $FF, $FF, $FF, $FF, $FA, $80, $82, $2A, $2A, $A2, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A0, $00
+DB $69, $96, $96, $55, $55, $55, $55, $55, $55, $55, $55, $55, $55, $6A, $8F, $FA, $A0, $FF, $FF, $FE
+DB $FF, $FF, $FF, $FF, $FA, $A0, $8A, $AA, $8A, $82, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $6A, $95, $95, $55, $55, $55, $55, $55, $55, $55, $55, $55, $55, $6A, $83, $FA, $A8, $FD, $7F, $FF
+DB $FF, $FF, $FF, $FF, $F8, $22, $82, $28, $AA, $02, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $9A, $56, $A5, $55, $95, $55, $55, $55, $55, $55, $55, $55, $55, $6A, $AB, $EA, $AA, $5D, $7F, $7F
+DB $FF, $FF, $FF, $FF, $FE, $80, $88, $80, $AA, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $99, $56, $AA, $AA, $95, $7F, $95, $55, $55, $55, $55, $55, $55, $AA, $AA, $AA, $AA, $5D, $5F, $7F
+DB $5F, $FF, $FF, $FF, $FE, $AA, $A0, $2A, $80, $82, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $AA, $AA, $AA, $5F, $FF, $FF, $A5, $55, $55, $55, $55, $55, $55, $AA, $AA, $AA, $AA, $5F, $D5, $FA
+DB $AF, $FF, $FF, $FF, $FE, $80, $AA, $AA, $08, $2A, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $AA, $EA, $AA, $FF, $FF, $FF, $A5, $55, $55, $55, $55, $55, $55, $6A, $AA, $AA, $AA, $95, $55, $AA
+DB $A7, $FF, $FF, $FF, $FE, $A0, $00, $0A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $97, $EA, $AA, $FF, $D6, $BF, $95, $95, $55, $55, $55, $55, $55, $6A, $AA, $AA, $AA, $95, $55, $AA
+DB $AB, $FF, $FF, $FF, $FE, $A2, $80, $AA, $2A, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $9F, $FB, $EA, $FF, $D6, $7F, $A5, $55, $55, $55, $55, $55, $55, $6A, $AA, $AA, $A2, $A5, $55, $AA
+DB $A7, $FF, $FF, $FF, $FF, $A2, $A8, $AA, $28, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $97, $FA, $AA, $FF, $6A, $5F, $E5, $59, $55, $55, $55, $55, $55, $6A, $AA, $AA, $A0, $A5, $9A, $A9
+DB $57, $FF, $FF, $FF, $FF, $A8, $2A, $8A, $AA, $A2, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $97, $FA, $AA, $BF, $AA, $9F, $E9, $59, $59, $55, $55, $55, $55, $6A, $AA, $AA, $AA, $A5, $59, $55
+DB $57, $FF, $FF, $FF, $FF, $AA, $02, $82, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $67, $FA, $AA, $BF, $E9, $7F, $E5, $56, $A9, $55, $55, $55, $55, $6A, $AA, $AA, $AA, $55, $55, $55
+DB $57, $FF, $FF, $FF, $FF, $E2, $28, $22, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $A7, $FE, $AA, $BF, $FF, $FF, $E9, $56, $A6, $55, $55, $55, $65, $6A, $AA, $AA, $AA, $95, $55, $55
+DB $5F, $FF, $FF, $FF, $FF, $E0, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $A7, $FE, $AA, $BF, $FF, $FF, $E9, $56, $A9, $5A, $5A, $59, $A6, $6A, $AA, $AA, $AA, $A5, $55, $55
+DB $5F, $FF, $FF, $FF, $FF, $EA, $AA, $00, $82, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $67, $FE, $AA, $BF, $FF, $FF, $F9, $55, $9A, $6A, $A6, $95, $5A, $AA, $AA, $AA, $A2, $55, $55, $55
+DB $5F, $FF, $FF, $FF, $FF, $EA, $0A, $A8, $08, $2A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $A7, $FE, $AA, $BF, $FF, $FF, $F9, $55, $AA, $56, $96, $56, $9A, $6A, $AA, $AA, $A0, $55, $55, $55
+DB $5F, $FF, $FF, $FF, $FF, $EA, $22, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $A6, $FE, $AA, $AF, $FF, $FA, $A9, $95, $A5, $55, $5A, $AA, $AA, $5A, $AA, $AA, $A0, $55, $55, $55
+DB $5F, $FF, $FF, $FF, $FF, $EA, $8A, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $45, $FF, $AA, $AF, $FF, $FF, $E9, $55, $65, $69, $5A, $AA, $AA, $AA, $AA, $AA, $A0, $55, $55, $55
+DB $5F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $2A, $A2, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $A9, $FF, $AA, $AA, $FF, $FF, $FA, $55, $55, $A9, $6A, $69, $AA, $9A, $AA, $AA, $A0, $55, $55, $55
+DB $5F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $85, $FF, $AA, $AF, $FF, $FF, $FA, $55, $55, $56, $56, $AA, $6A, $A6, $AA, $AA, $A0, $55, $55, $55
+DB $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $41, $EF, $FF, $AF, $FF, $FF, $FD, $69, $55, $55, $96, $95, $55, $56, $AA, $AA, $A0, $55, $65, $55
+DB $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $E1, $EF, $AA, $AF, $FF, $FF, $FE, $55, $55, $55, $55, $55, $A9, $6A, $AA, $AA, $A0, $7D, $69, $55
+DB $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $F2, $FF, $AA, $AF, $FF, $FF, $FE, $A5, $55, $55, $55, $56, $55, $59, $AA, $AA, $A0, $55, $5A, $55
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AE, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FE, $FF, $FE, $AF, $FF, $FF, $FE, $55, $55, $55, $55, $55, $65, $55, $6A, $AA, $A0, $55, $55, $57
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AE, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FE, $FF, $FF, $AF, $FF, $FF, $FE, $55, $55, $55, $55, $55, $55, $55, $5A, $AA, $A0, $55, $A5, $57
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $BA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $9F, $FF, $EA, $AF, $FF, $FF, $FE, $95, $55, $55, $55, $55, $55, $55, $5A, $AA, $A2, $95, $55, $5F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $FA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $BF, $EE, $AF, $FF, $FF, $FF, $55, $55, $55, $55, $55, $55, $55, $5F, $AA, $A0, $55, $55, $7F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $EA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FA, $AF, $FF, $AF, $FF, $FF, $FF, $99, $55, $55, $55, $55, $55, $55, $7E, $AA, $A0, $55, $67, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AB, $EA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $EB, $FF, $EF, $FF, $FF, $FF, $95, $55, $55, $55, $55, $55, $56, $FE, $AA, $A0, $55, $A9, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AF, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FB, $FF, $FF, $FF, $FF, $FF, $95, $55, $55, $55, $55, $55, $6F, $FA, $AA, $A0, $56, $A5, $7F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $BF, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $95, $55, $55, $55, $55, $56, $FF, $EA, $AA, $AA, $AA, $25, $7F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $FE, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $95, $55, $55, $55, $55, $5F, $FF, $EA, $AA, $AA, $86, $55, $7F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FA, $AB, $FF, $FF, $FF, $FE, $D5, $55, $55, $55, $55, $FF, $FF, $EA, $AA, $AA, $05, $01, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $EA, $BF, $FF, $FF, $FF, $FF, $E6, $55, $55, $55, $5B, $FF, $FF, $AA, $AA, $AA, $04, $03, $EF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $AB, $FF, $FF, $FF, $FF, $FF, $E6, $AA, $AA, $AA, $7F, $FF, $FF, $AA, $AA, $A2, $80, $0B, $9F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FA, $A7, $80, $0B, $FF, $FF, $FF, $AA, $AA, $00, $80, $5E, $5F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $BF, $EA, $BF, $FF, $FF, $FF, $AA, $A8, $00, $00, $5D, $1F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $AF, $FF, $FF, $FF, $FF, $FF, $FF, $EB, $FE, $AB, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $01, $5D, $1F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $AF, $BF, $FF, $FF, $FF, $FF, $E5, $5F, $DA, $AF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $00, $5D, $17
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $BF, $FF, $FF, $FF, $FF, $FE, $97, $FE, $A9, $FF, $FF, $FF, $FF, $FF, $8A, $AA, $AA, $54, $5D, $1E
+DB $7F, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FF, $FF, $FE, $6B, $EA, $55, $FF, $FF, $FF, $FF, $FF, $E2, $AA, $A0, $55, $5D, $66
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FF, $FF, $FF, $6B, $99, $6B, $FF, $FF, $FF, $FF, $FF, $E0, $8A, $A2, $55, $55, $65
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $DA, $AF, $FF, $FF, $FF, $FF, $FF, $F8, $8A, $A0, $55, $5A, $55
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F8, $22, $A0, $55, $56, $D6
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FF, $FE, $FA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $02, $A0, $55, $56, $55
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FF, $AA, $BA, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $02, $A0, $15, $59, $57
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FF, $AE, $AB, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $82, $00, $00, $55, $57
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $BA, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FA, $FA, $AF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C0, $00, $00, $55, $5F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $BE, $AA, $AA, $AA
+DB $FF, $FF, $FF, $EF, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F0, $08, $01, $55, $7F
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $BF, $AA, $AA, $AA
+DB $FF, $FF, $FF, $FE, $AA, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $00, $00, $55, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $BF, $EA, $AA, $AA
+DB $FF, $FF, $FF, $FE, $AB, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $E0, $00, $4B, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $AF, $CA, $AA, $AA
+DB $FF, $FF, $FE, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FC, $40, $AB, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $AF, $FA, $AA, $AA
+DB $FF, $FF, $BE, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $D5, $BF, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $AA, $AF, $F2, $AA, $AA
+DB $FF, $FF, $EA, $AA, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AF, $FE, $AA, $AA
+DB $FF, $FF, $AA, $AB, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $AA, $AA, $AF, $3F, $AA, $AA
+DB $FF, $FE, $AA, $AF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $AF, $FF, $AA, $AA
+DB $FF, $FE, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $97, $FF, $EA, $AA
+DB $FA, $AA, $AA, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FE, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $5B, $FF, $EA, $AA
+DB $EA, $AA, $AB, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $AA, $AA, $9B, $FF, $FA, $AA
+DB $AA, $AA, $AB, $FE, $AA, $AA, $A6, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $AA, $AA, $AA, $AA, $FF, $FA, $AA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $EA, $AA, $A6, $AA, $5B, $FD, $FE, $AA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FB, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $55, $65, $55, $5B, $FF, $CE, $AA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FB, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $A9, $55, $55, $55, $56, $F7, $CE, $AA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FB, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $99, $55, $55, $55, $57, $FF, $FF, $AA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $AA, $65, $55, $55, $57, $FF, $7F, $AA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $EF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FE, $BA, $55, $55, $57, $57, $FF, $FF, $AA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $AA, $55, $56, $55, $57, $FD, $FF, $EA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C3, $FF
+DB $FE, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $A9, $55, $55, $55, $57, $FF, $FF, $EA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $1F, $FF
+DB $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $E9, $55, $55, $55, $57, $FF, $FF, $EA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F9, $6D, $55, $57, $7F, $FF, $FF, $CA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C5, $FF, $FF
+DB $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F9, $5D, $5F, $5F, $FF, $FF, $FC, $FA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $1D, $7F, $EF
+DB $BF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FA, $7F, $7F, $FF, $FF, $FF, $FD, $FA
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $5F, $EF
+DB $AF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $7F, $FF, $FF, $F3, $7A
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C7, $EF
+DB $BF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $7F, $FF, $FF, $F7, $3A
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F4, $EB
+DB $BF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $FF, $FF, $DF, $FE
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FC, $2A
+DB $BF, $AF, $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $7F, $FF, $FF, $FD, $FE
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $0E
+DB $BF, $AF, $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $FE
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $0E
+DB $BF, $AF, $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $DD, $FF, $FF, $F3, $FE
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $A3, $FF, $FF, $FC, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $C0
+DB $BF, $AF, $FE, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $FF, $FF, $7F, $FF, $FF, $FE
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $80, $03, $C0, $00, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $E0
+DB $3E, $EA, $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $7F, $FF, $5F, $FF, $FF, $FF
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $80, $00, $00, $0A, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $E8
+DB $3B, $EA, $FF, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F5, $5F, $FF, $7F, $FF, $FF, $FF
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $80, $00, $00, $02, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F2
+DB $83, $EA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $F5, $47, $7F, $7F, $FF, $FF, $FF
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $80, $00, $00, $0A, $BF, $FF, $FF, $FF, $FF, $FF, $DF, $FF, $FA
+DB $A3, $EA, $BF, $EF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FC, $51, $FF, $FF, $FF, $FF, $FF
+DB $AA, $AA, $AA, $AA, $AA, $AA, $AA, $80, $00, $00, $2A, $BF, $FF, $FF, $3F, $FF, $FF, $D7, $FF, $F8
+DB $B7, $EA, $BF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FD, $14, $7F, $5F, $FF, $FF, $FF
