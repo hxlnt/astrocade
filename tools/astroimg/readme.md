@@ -10,7 +10,7 @@ Python 2.7 or higher. Tested with Python 2.7 and Python 3.6 on Mac OS X and Pyth
 
 `python astroimg.py path/to/img.png`
 
-Add `--dither` to dither the image. 
+Add `--dither` after the file path to dither the image. 
 
 ## Output
 
