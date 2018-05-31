@@ -2,6 +2,8 @@
 
 `astroimg` converts an image file to Z80 source code that can be compiled for the Bally Astrocade. Some cool features include automatic horizontal color boundary detection to get as many as 8 colors on screen simultaneously and an optional flag for dithering the image.
 
+![astroimg demo](https://hxlntblob.blob.core.windows.net/nbm/astroimgtest.jpg)
+
 ## Prerequisites
 
 Python 2.7 or higher. Tested with Python 2.7 and Python 3.6 on Mac OS X and Python 3.5 on Windows 10. Install prerequisite packages by running `pip install -r requirements.txt`.
