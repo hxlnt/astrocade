@@ -1,3 +1,4 @@
 *.lst
 HVGLIB.H
 demos/wips
+demos/compileAndLaunch.bat
