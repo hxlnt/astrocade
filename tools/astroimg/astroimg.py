@@ -29,7 +29,7 @@ class PixelColor:
         else:
             s = df/maxrgb
         v = maxrgb
-        return h, s, v
+        return round(h, 3), round(s, 3), round(v, 3)
 
     def toHex(self):
         if self.r == 255:
@@ -54,6 +54,7 @@ class PixelColor:
                 return 0x00
 
     def toAstroRGB(self):
+        self.toEightColorRGB()
         if self.r == 0 and self.g == 255 and self.b == 255:
             self.r = 5
         elif self.r == 0 and self.g == 0 and self.b == 255:
@@ -71,6 +72,44 @@ class PixelColor:
             self.r = 59
             self.b = 112
         return self.r, self.g, self.b
+
+    def toEightColorRGB(self):
+        hsv = self.toHSV()
+        if hsv[1] >= .15 and hsv[2] >= .4:
+            if (hsv[0] < 35 or hsv[0] > 340):
+                self.r = 255
+                self.g = 0 
+                self.b = 0
+            elif (hsv[0] >= 35 and hsv[0] < 70):
+                self.r = 255
+                self.g = 255
+                self.b = 0
+            elif (hsv[0] >= 70 and hsv[0] < 155):
+                self.r = 0
+                self.g = 255
+                self.b = 0
+            elif (hsv[0] >= 155 and hsv[0] < 190):
+                self.r = 0
+                self.g = 255
+                self.b = 255
+            elif (hsv[0] >= 190 and hsv[0] < 250):
+                self.r = 0
+                self.g = 0
+                self.b = 255
+            elif (hsv[0] >= 255 and hsv[0] <= 340):
+                self.r = 255
+                self.g = 0
+                self.b = 255
+        elif hsv[1] < .15 and hsv[2] >= .4:
+            self.r = 255
+            self.g = 255
+            self.b = 255
+        else:
+            self.r = 0
+            self.g = 0
+            self.b = 0
+        return self.r, self.g, self.b
+
 
 #################################################################
 
@@ -97,38 +136,38 @@ class PixelColor:
 #         for x in range(img.size[0]):
 #             pixelMap = img.load()
 #             hsvpixel = rgb2hsv(pixelMap[x,y][0], pixelMap[x,y][1], pixelMap[x,y][2])
-#             if hsvpixel[1] >= .15 and hsvpixel[2] >= .4:
-#                 if (hsvpixel[0] < 35 or hsvpixel[0] > 340):
+#             if self.g >= .15 and self.b >= .4:
+#                 if (self.r < 35 or self.r > 340):
 #                     pixelMap[x,y] = (255,0,0)
 #                     palette.add("#FF0000")
 #                     redxpos.add(x)
 #                     redcounter += 1
-#                 elif (hsvpixel[0] >= 35 and hsvpixel[0] < 70):
+#                 elif (self.r >= 35 and self.r < 70):
 #                     pixelMap[x,y] = (255,255,0)
 #                     palette.add("#FFFF00")
 #                     yellowxpos.add(x)
 #                     yellowcounter += 1
-#                 elif (hsvpixel[0] >= 70 and hsvpixel[0] < 155):
+#                 elif (self.r >= 70 and self.r < 155):
 #                     pixelMap[x,y] = (0,255,0)
 #                     palette.add("#00FF00")
 #                     greenxpos.add(x)
 #                     greencounter += 1
-#                 elif (hsvpixel[0] >= 155 and hsvpixel[0] < 190):
+#                 elif (self.r >= 155 and self.r < 190):
 #                     pixelMap[x,y] = (0,255,255)
 #                     palette.add("#00FFFF")
 #                     cyanxpos.add(x)
 #                     cyancounter += 1
-#                 elif (hsvpixel[0] >= 190 and hsvpixel[0] < 250):
+#                 elif (self.r >= 190 and self.r < 250):
 #                     pixelMap[x,y] = (0,0,255)
 #                     palette.add("#0000FF")
 #                     bluexpos.add(x)
 #                     bluecounter += 1
-#                 elif (hsvpixel[0] >= 255 and hsvpixel[0] <= 340):
+#                 elif (self.r >= 255 and self.r <= 340):
 #                     pixelMap[x,y] = (255,0,255)
 #                     palette.add("#FF00FF")
 #                     magentaxpos.add(x)
 #                     magentacounter += 1
-#             elif hsvpixel[1] < .15 and hsvpixel[2] >= .4:
+#             elif self.g < .15 and self.b >= .4:
 #                 pixelMap[x,y] = (255,255,255)
 #                 palette.add("#FFFFFF")
 #                 whitexpos.add(x)
