@@ -31,7 +31,7 @@ class PixelColor:
         v = maxrgb
         return h, s, v
 
-    def rgb2hex(self):
+    def toHex(self):
         if self.r == 255:
             if self.g == 255:
                 if self.b == 255:
@@ -53,24 +53,24 @@ class PixelColor:
             else:
                 return 0x00
 
-def rgb2astrorgb(self):
-    if self.r == 0 & self.g == 255 & self.b == 255:
-        self.r = 5
-    elif self.r == 0 & self.g == 0 & self.b == 255:
-        self.r = 39
-        self.g = 168
-    elif self.r == 255 & self.g == 0 & self.b == 255:
-        self.g = 152
-    elif self.r == 255 & self.g == 0 & self.b == 0:
-        self.g = 85
-        self.b = 39
-    elif self.r == 255 & self.g == 255 & self.b == 0:
-        self.g = 252
-        self.b = 78
-    else:
-        self.r = 59
-        self.b = 112
-    return self.r, self.g, self.b
+    def toAstroRGB(self):
+        if self.r == 0 and self.g == 255 and self.b == 255:
+            self.r = 5
+        elif self.r == 0 and self.g == 0 and self.b == 255:
+            self.r = 39
+            self.g = 168
+        elif self.r == 255 and self.g == 0 and self.b == 255:
+            self.g = 152
+        elif self.r == 255 and self.g == 0 and self.b == 0:
+            self.g = 85
+            self.b = 39
+        elif self.r == 255 and self.g == 255 and self.b == 0:
+            self.g = 252
+            self.b = 78
+        else:
+            self.r = 59
+            self.b = 112
+        return self.r, self.g, self.b
 
 #################################################################
 
