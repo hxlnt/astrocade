@@ -4,28 +4,34 @@ sys.path.append(os.path.abspath('..'))
 import astroimg
 import unittest
 
-class TestPixelColor(unittest.TestCase):
+class TestPixel(unittest.TestCase):
 
     def test_rgb2hsv(self):
-        mockcolor = astroimg.PixelColor(252, 1, 0)
+        mockcolor = astroimg.Pixel(252, 1, 0)
         result = mockcolor.toHSV()
         self.assertEqual(result, (0.238, 1.000, 0.988))
     
     def test_rgb2hex(self):
-        mockcolor = astroimg.PixelColor(1, 5, 250)
+        mockcolor = astroimg.Pixel(1, 5, 250)
         result = mockcolor.toHex()
         self.assertEqual(result, 0xEC)
 
     def test_rgb2astrorgb(self):
-        mockcolor = astroimg.PixelColor(235, 250, 1)
+        mockcolor = astroimg.Pixel(235, 250, 1)
         result = mockcolor.toAstroRGB()
         self.assertEqual(result, (255, 252, 78))
     
     def test_rgb2eightcolor(self):
-        mockcolor = astroimg.PixelColor(245, 252, 5)
+        mockcolor = astroimg.Pixel(245, 252, 5)
         result = mockcolor.toEightColorRGB()
         self.assertEqual(result, (255, 255, 0))
 
+class TestImg(unittest.TestCase):
+    
+    def test_eightcolorcount(self):
+        mockimage = astroimg.Img('test.png')
+        result = mockimage.eightColorCount()
+        self.assertEqual(result['green'], 799 * 705)
 
 if __name__ == '__main__':
     unittest.main()

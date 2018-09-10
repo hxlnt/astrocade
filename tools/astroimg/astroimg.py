@@ -4,7 +4,7 @@ from PIL import Image, ImageEnhance
 import statistics
 import sys
 
-class PixelColor:
+class Pixel:
     
     def __init__(self, r, g, b):
         self.r = r
@@ -105,6 +105,53 @@ class PixelColor:
             self.g = 0
             self.b = 0
         return self.r, self.g, self.b
+
+
+class Img:
+    
+    def __init__(self, imgpath):
+        self.imgpath = imgpath
+        self.img = Image.open(imgpath)
+        self.pixelMap = self.img.load()
+        self.width = self.img.size[0]
+        self.height = self.img.size[1]
+        self.colorcount = {}
+        self.colorxpos = {}
+        self.colorboundary = 0
+    
+    def eightColorCount(self):
+        red = yellow = green = cyan = blue = magenta = black = white = 0
+        for y in range(self.height):
+            for x in range(self.width):
+                thiscolor = Pixel(self.pixelMap[x,y][0], self.pixelMap[x,y][1], self.pixelMap[x,y][2]).toEightColorRGB()
+                if thiscolor == (255,0,0):
+                    red += 1
+                elif thiscolor == (255,255,0):
+                    yellow += 1
+                elif thiscolor == (0,255,0):
+                    green+= 1
+                elif thiscolor == (0,255,255):
+                    cyan += 1
+                elif thiscolor == (0,0,255):
+                    blue += 1
+                elif thiscolor == (255,0,255):
+                    magenta += 1
+                elif thiscolor == (0,0,0):
+                    black += 1
+                else:
+                    white += 1
+        self.colorcount.update({
+            'red': red,
+            'yellow': yellow,
+            'green': green,
+            'cyan': cyan,
+            'blue': blue,
+            'magenta': magenta,
+            'black': black,
+            'white': white
+            })
+        print('colorcount: ', self.colorcount)
+        return self.colorcount
 
 
 #################################################################
