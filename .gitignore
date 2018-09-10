@@ -2,3 +2,4 @@
 HVGLIB.H
 demos/wips
 demos/compileAndLaunch.bat
+__pycache__
