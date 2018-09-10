@@ -12,7 +12,7 @@ class TestPixelColor(unittest.TestCase):
         self.assertEqual(result, (0.238, 1.000, 0.988))
     
     def test_rgb2hex(self):
-        mockcolor = astroimg.PixelColor(0, 0, 255)
+        mockcolor = astroimg.PixelColor(1, 5, 250)
         result = mockcolor.toHex()
         self.assertEqual(result, 0xEC)
 

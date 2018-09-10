@@ -32,6 +32,7 @@ class PixelColor:
         return round(h, 3), round(s, 3), round(v, 3)
 
     def toHex(self):
+        self.toEightColorRGB()
         if self.r == 255:
             if self.g == 255:
                 if self.b == 255:
