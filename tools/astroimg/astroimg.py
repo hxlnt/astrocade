@@ -57,22 +57,17 @@ class PixelColor:
     def toAstroRGB(self):
         self.toEightColorRGB()
         if self.r == 0 and self.g == 255 and self.b == 255:
-            self.r = 5
+            return (5, 255, 255)
         elif self.r == 0 and self.g == 0 and self.b == 255:
-            self.r = 39
-            self.g = 168
+            return (39, 168, 255)
         elif self.r == 255 and self.g == 0 and self.b == 255:
-            self.g = 152
+            return (255, 152, 255)
         elif self.r == 255 and self.g == 0 and self.b == 0:
-            self.g = 85
-            self.b = 39
+            return (255, 85, 39)
         elif self.r == 255 and self.g == 255 and self.b == 0:
-            self.g = 252
-            self.b = 78
+            return (255, 252, 78)
         else:
-            self.r = 59
-            self.b = 112
-        return self.r, self.g, self.b
+            return (59, 255, 112)
 
     def toEightColorRGB(self):
         hsv = self.toHSV()
