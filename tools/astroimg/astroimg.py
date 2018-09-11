@@ -110,6 +110,8 @@ class Img:
         self.magentaxpos = set()
         self.blackxpos = set()
         self.whitexpos = set()
+        self.leftimg = None
+        self.rightimg = None
     
     def getColorCounts(self):
         red = yellow = green = cyan = blue = magenta = black = white = 0
@@ -180,7 +182,11 @@ class Img:
         median = round(statistics.median(minmax))
         self.colorboundary = int(math.floor(median - (median % 4)))
 
-   def getColorSplits(self):
+    def splitImage(self):
+        self.imgleft = self.img.crop((0, 0, self.colorboundary, 102))
+        self.imgright = self.img.crop((self.colorboundary, 0, 160, 102))
+
+
 
 
         # leftcolors = {"red":redcounter, "yellow":yellowcounter, "green":greencounter, "cyan":cyancounter, "blue":bluecounter, "magenta":magentacounter, "black":blackcounter, "white":whitecounter}
