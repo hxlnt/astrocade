@@ -27,11 +27,13 @@ class TestPixel(unittest.TestCase):
         self.assertEqual(result, (255, 255, 0))
 
 class TestImg(unittest.TestCase):
-    
-    def test_eightcolorcount(self):
+
+    def test_getcolorcountsandboundary(self):
         mockimage = astroimg.Img('test.png')
-        result = mockimage.eightColorCount()
-        self.assertEqual(result['green'], 799 * 705)
+        mockimage.getColorCounts()
+        self.assertEqual(mockimage.colorcount['green'], 156 * 102)
+        mockimage.getColorBoundary()
+        self.assertEqual(mockimage.colorboundary, 4)
 
 if __name__ == '__main__':
     unittest.main()
