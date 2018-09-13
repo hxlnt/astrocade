@@ -10,8 +10,10 @@ class Pixel:
         self.r = r
         self.g = g
         self.b = b
-    
-    def toHSV(self):
+
+    def _toEightColorRGB(self):
+        """Returns an RGB tuple corresponding to a given pixel's closest match to one of 8 predefined colors (red, yellow, green, cyan, blue, magenta, white, or black).
+        """
         r, g, b = self.r / 255.0, self.g / 255.0, self.b / 255.0
         maxrgb = max(r, g, b)
         minrgb = min(r, g, b)
@@ -28,13 +30,33 @@ class Pixel:
             s = 0
         else:
             s = df/maxrgb
-        v = maxrgb
-        return (round(h, 3), round(s, 3), round(v, 3))
+        h = round(h, 3)
+        s = round(s, 3)
+        v = round(maxrgb, 3)
+        if s >= .15 and v >= .4:
+            if (h < 35 or h > 340):
+                return (255, 0 , 0)
+            elif (h >= 35 and h < 70):
+                return (255, 255, 0)
+            elif (h >= 70 and h < 155):
+                return (0, 255, 0)
+            elif (h >= 155 and h < 190):
+                return (0, 255, 255)
+            elif (h >= 190 and h < 250):
+                return (0, 0, 255)
+            elif (h >= 255 and h <= 340):
+                return (255, 0, 255)
+        elif s < .15 and v >= .4:
+            return (255, 255, 255)
+        else:
+            return (0, 0, 0)
 
     def toHex(self):
-        r = self.toEightColorRGB()[0]
-        g = self.toEightColorRGB()[1]
-        b = self.toEightColorRGB()[2]
+        """Returns the corresponding Astrocade hex value for the given pixel.
+        """
+        r = self._toEightColorRGB()[0]
+        g = self._toEightColorRGB()[1]
+        b = self._toEightColorRGB()[2]
         if r == 255 and g == 255 and b == 255:
             return 0x07
         elif r == 255 and g == 255 and b == 0:
@@ -53,9 +75,11 @@ class Pixel:
             return 0x00
 
     def toAstroRGB(self):
-        r = self.toEightColorRGB()[0]
-        g = self.toEightColorRGB()[1]
-        b = self.toEightColorRGB()[2]
+        """Returns an RGB tuple corresponding to how the given pixel will look on the Astrocade. Useful for previewing a converted image in accurate color.
+        """
+        r = self._toEightColorRGB()[0]
+        g = self._toEightColorRGB()[1]
+        b = self._toEightColorRGB()[2]
         if r == 0 and g == 255 and b == 255:
             return (5, 255, 255)
         elif r == 0 and g == 0 and b == 255:
@@ -69,37 +93,23 @@ class Pixel:
         else:
             return 59, 255, 112
 
-    def toEightColorRGB(self):
-        hsv = self.toHSV()
-        if hsv[1] >= .15 and hsv[2] >= .4:
-            if (hsv[0] < 35 or hsv[0] > 340):
-                return (255, 0 , 0)
-            elif (hsv[0] >= 35 and hsv[0] < 70):
-                return (255, 255, 0)
-            elif (hsv[0] >= 70 and hsv[0] < 155):
-                return (0, 255, 0)
-            elif (hsv[0] >= 155 and hsv[0] < 190):
-                return (0, 255, 255)
-            elif (hsv[0] >= 190 and hsv[0] < 250):
-                return (0, 0, 255)
-            elif (hsv[0] >= 255 and hsv[0] <= 340):
-                return (255, 0, 255)
-        elif hsv[1] < .15 and hsv[2] >= .4:
-            return (255, 255, 255)
-        else:
-            return (0, 0, 0)
-
 class Img:
     
     def __init__(self, imgpath, ditherWanted=False):
         self.imgpath = imgpath
-        if ditherWanted == True:
-            self.img = Image.open(imgpath).resize([160,102],Image.ANTIALIAS).convert("P", dither=Image.FLOYDSTEINBERG).convert("RGB")
+        if imgpath != None:
+            if ditherWanted == True:
+                self.img = Image.open(imgpath).resize([160,102],Image.ANTIALIAS).convert("P", dither=Image.FLOYDSTEINBERG).convert("RGB")
+            else:
+                self.img = Image.open(imgpath).resize([160,102],Image.ANTIALIAS).convert("RGB")
+            self.pixelMap = self.img.load()
+            self.width = self.img.size[0]
+            self.height = self.img.size[1]
         else:
-            self.img = Image.open(imgpath).resize([160,102],Image.ANTIALIAS).convert("RGB")
-        self.pixelMap = self.img.load()
-        self.width = self.img.size[0]
-        self.height = self.img.size[1]
+            self.img = None
+            self.pixelMap = None
+            self.width = None
+            self.height = None
         self.colorcount = {}
         self.colorboundary = 0
         self.redxpos = set()
@@ -110,14 +120,13 @@ class Img:
         self.magentaxpos = set()
         self.blackxpos = set()
         self.whitexpos = set()
-        self.leftimg = None
-        self.rightimg = None
     
     def getColorCounts(self):
         red = yellow = green = cyan = blue = magenta = black = white = 0
         for y in range(self.height):
             for x in range(self.width):
-                thiscolor = Pixel(self.pixelMap[x,y][0], self.pixelMap[x,y][1], self.pixelMap[x,y][2]).toEightColorRGB()
+                thiscolor = Pixel(self.pixelMap[x,y][0], self.pixelMap[x,y][1], self.pixelMap[x,y][2])._toEightColorRGB()
+                self.pixelMap[x,y] = thiscolor
                 if thiscolor == (255,0,0):
                     red += 1
                     self.redxpos.add(x)
@@ -179,137 +188,147 @@ class Img:
         if len(self.whitexpos) > 0 and self.colorcount['white'] > 160:
             minmax.append(min(self.whitexpos))
             minmax.append(max(self.whitexpos))
+        print(minmax)
         median = round(statistics.median(minmax))
+        print(median)
         self.colorboundary = int(math.floor(median - (median % 4)))
 
-    def splitImage(self):
-        self.imgleft = self.img.crop((0, 0, self.colorboundary, 102))
-        self.imgright = self.img.crop((self.colorboundary, 0, 160, 102))
+    def splitAndRecombineImage(self):
+        imgleft = Img(None)
+        imgleft.img = self.img.crop((0, 0, self.colorboundary, 102))
+        imgleft.pixelMap = imgleft.img.load()
+        imgleft.width = imgleft.img.size[0]
+        imgleft.height = imgleft.img.size[1]
+        imgleft.getColorCounts()
+        leftColorsSorted = sorted(iter(imgleft.colorcount.items()), key=lambda k_v: (k_v[1], k_v[0]))
+        colorsToRoll = [leftColorsSorted[0][0], leftColorsSorted[1][0], leftColorsSorted[2][0], leftColorsSorted[3][0]]
+        colorsToKeep = [leftColorsSorted[4][0], leftColorsSorted[5][0], leftColorsSorted[6][0], leftColorsSorted[7][0]]
+        imgleft._colorRoller(colorsToKeep, colorsToRoll)
+
+        imgright = Img(None)
+        imgright.img = self.img.crop((self.colorboundary, 0, 160, 102))
+        imgright.pixelMap = imgright.img.load()
+        imgright.width = imgright.img.size[0]
+        imgright.height = imgright.img.size[1]
+        imgright.getColorCounts()
+        rightColorsSorted = sorted(iter(imgright.colorcount.items()), key=lambda k_v: (k_v[1], k_v[0]))
+        colorsToRoll = [rightColorsSorted[0][0], rightColorsSorted[1][0], rightColorsSorted[2][0], rightColorsSorted[3][0]]
+        colorsToKeep = [rightColorsSorted[4][0], rightColorsSorted[5][0], rightColorsSorted[6][0], rightColorsSorted[7][0]]
+        imgright._colorRoller(colorsToKeep, colorsToRoll)
+
+        newimg = Image.new("RGB", (160,102))
+        newimg.paste(imgleft.img, (0,0))
+        newimg.paste(imgright.img, (self.colorboundary, 0))
+        return newimg
+
+    def _colorRoller(self, colors_to_keep, colors_to_roll):
+        if "red" in colors_to_roll:
+            if "magenta" in colors_to_keep:
+                self._colorSwapper((255,0,255), (255,0,0))
+            elif "yellow" in colors_to_keep:
+                self._colorSwapper((255,255,0), (255,0,0))
+            elif "black" in colors_to_keep:
+                self._colorSwapper((0,0,0), (255,0,0))
+            elif "white" in colors_to_keep:
+                self._colorSwapper((255,255,255), (255,0,0))
+        if "magenta" in colors_to_roll:
+            if "red" in colors_to_keep:
+                self._colorSwapper((255,0,0), (255,0,255))
+            elif "blue" in colors_to_keep:
+                self._colorSwapper((0,0,255), (255,0,255))
+            elif "white" in colors_to_keep:
+                self._colorSwapper((255,255,255), (255,0,255))
+            elif "black" in colors_to_keep:
+                self._colorSwapper((0,0,0), (255,0,255))
+        if "blue" in colors_to_roll:
+            if "cyan" in colors_to_keep:
+                self._colorSwapper((0,255,255), (0,0,255))
+            elif "magenta" in colors_to_keep:
+                self._colorSwapper((255,0,255), (0,0,255))
+            elif "black" in colors_to_keep:
+                self._colorSwapper((0,0,0), (0,0,255))
+            elif "white" in colors_to_keep:
+                self._colorSwapper((255,255,255), (0,0,255))
+        if "cyan" in colors_to_roll:
+            if "blue" in colors_to_keep:
+                self._colorSwapper((0,0,255), (0,255,255))
+            elif "green" in colors_to_keep:
+                self._colorSwapper((0,255,0), (0,255,255))
+            elif "white" in colors_to_keep:
+                self._colorSwapper((255,255,255), (0,255,255))
+            elif "yellow" in colors_to_keep:
+                self._colorSwapper((255,255,0), (0,255,255))
+            colors_to_roll.remove("cyan")
+            if len(colors_to_roll) == 0:
+                return
+        if "green" in colors_to_roll:
+            if "cyan" in colors_to_keep:
+                self._colorSwapper((0,255,255), (0,255,0))
+            elif "yellow" in colors_to_keep:
+                self._colorSwapper((255,255,0), (0,255,0))
+            elif "blue" in colors_to_keep:
+                self._colorSwapper((0,0,255), (0,255,0))
+            elif "black" in colors_to_keep:
+                self._colorSwapper((0,0,0), (0,255,0))
+            colors_to_roll.remove("green")
+            if len(colors_to_roll) == 0:
+                return
+        if "yellow" in colors_to_roll:
+            if "white" in colors_to_keep:
+                self._colorSwapper((255,255,255), (255,255,0))
+            elif "green" in colors_to_keep:
+                self._colorSwapper((0,255,0), (255,255,0))  
+            elif "red" in colors_to_keep:
+                self._colorSwapper((255,0,0), (255,255,0))        
+            elif "cyan" in colors_to_keep:
+                self._colorSwapper((0,255,255), (255,255,0))
+            colors_to_roll.remove("yellow")
+            if len(colors_to_roll) == 0:
+                return
+        if "black" in colors_to_roll:
+            if "blue" in colors_to_keep:
+                self._colorSwapper((0,0,255), (0,0,0))
+            elif "red" in colors_to_keep:
+                self._colorSwapper((255,0,0), (0,0,0))  
+            elif "green" in colors_to_keep:
+                self._colorSwapper((0,0,255), (0,0,0))        
+            elif "magenta" in colors_to_keep:
+                self._colorSwapper((255,0,255), (0,0,0))
+            colors_to_roll.remove("black")
+            if len(colors_to_roll) == 0:
+                return
+        if "white" in colors_to_roll:
+            if "yellow" in colors_to_keep:
+                self._colorSwapper((255,255,0), (255,255,255))
+            elif "cyan" in colors_to_keep:
+                self._colorSwapper((0,255,255), (255,255,255))  
+            elif "magenta" in colors_to_keep:
+                self._colorSwapper((255,0,255), (255,255,255))        
+            elif "green" in colors_to_keep:
+                self._colorSwapper((0,255,0), (255,255,255))
+            colors_to_roll.remove("white")
+            return
 
 
+    def _colorSwapper(self, color_to_keep, color_to_roll):
+        for y in range(self.height):
+            for x in range(self.width):
+                if self.pixelMap[x,y] == color_to_roll:
+                    self.pixelMap[x,y] = color_to_keep
 
 
-        # leftcolors = {"red":redcounter, "yellow":yellowcounter, "green":greencounter, "cyan":cyancounter, "blue":bluecounter, "magenta":magentacounter, "black":blackcounter, "white":whitecounter}
-# leftcolors = sorted(iter(leftcolors.items()), key=lambda k_v: (k_v[1],k_v[0]))
-# colors_to_roll = [leftcolors[0][0], leftcolors[1][0], leftcolors[2][0], leftcolors[3][0]]
-# colors_to_keep = [leftcolors[4][0], leftcolors[5][0], leftcolors[6][0], leftcolors[7][0]]
+## Get user input
 
+## Instantiate image object
+## Get color counts
+## Get color boundary
+## Split image into halves and recombine to new image
 
 
 #################################################################
 
 # palette = blackxpos = bluexpos = cyanxpos = greenxpos = magentaxpos = redxpos = whitexpos = yellowxpos = {} 
 # palette = set()
-# imgleft = None
-# imgright = None
-
-
-# def colorRoller(colors_to_keep, colors_to_roll, img):
-#     if "red" in colors_to_roll:
-#         if "magenta" in colors_to_keep:
-#             colorSwapper((255,0,255), (255,0,0), img)
-#         elif "yellow" in colors_to_keep:
-#             colorSwapper((255,255,0), (255,0,0), img)
-#         elif "black" in colors_to_keep:
-#             colorSwapper((0,0,0), (255,0,0), img)
-#         elif "white" in colors_to_keep:
-#             colorSwapper((255,255,255), (255,0,0), img)
-#         colors_to_roll.remove("red")
-#         if len(colors_to_roll) == 0:
-#             return
-#     if "magenta" in colors_to_roll:
-#         if "red" in colors_to_keep:
-#             colorSwapper((255,0,0), (255,0,255), img)
-#         elif "blue" in colors_to_keep:
-#             colorSwapper((0,0,255), (255,0,255), img)
-#         elif "white" in colors_to_keep:
-#             colorSwapper((255,255,255), (255,0,255), img)
-#         elif "black" in colors_to_keep:
-#             colorSwapper((0,0,0), (255,0,255), img)
-#         colors_to_roll.remove("magenta")
-#         if len(colors_to_roll) == 0:
-#             return
-#     if "blue" in colors_to_roll:
-#         if "cyan" in colors_to_keep:
-#             colorSwapper((0,255,255), (0,0,255), img)
-#         elif "magenta" in colors_to_keep:
-#             colorSwapper((255,0,255), (0,0,255), img)
-#         elif "black" in colors_to_keep:
-#             colorSwapper((0,0,0), (0,0,255), img)
-#         elif "white" in colors_to_keep:
-#             colorSwapper((255,255,255), (0,0,255), img)
-#         colors_to_roll.remove("blue")
-#         if len(colors_to_roll) == 0:
-#             return
-#     if "cyan" in colors_to_roll:
-#         if "blue" in colors_to_keep:
-#             colorSwapper((0,0,255), (0,255,255), img)
-#         elif "green" in colors_to_keep:
-#             colorSwapper((0,255,0), (0,255,255), img)
-#         elif "white" in colors_to_keep:
-#             colorSwapper((255,255,255), (0,255,255), img)
-#         elif "yellow" in colors_to_keep:
-#             colorSwapper((255,255,0), (0,255,255), img)
-#         colors_to_roll.remove("cyan")
-#         if len(colors_to_roll) == 0:
-#             return
-#     if "green" in colors_to_roll:
-#         if "cyan" in colors_to_keep:
-#             colorSwapper((0,255,255), (0,255,0), img)
-#         elif "yellow" in colors_to_keep:
-#             colorSwapper((255,255,0), (0,255,0), img)
-#         elif "blue" in colors_to_keep:
-#             colorSwapper((0,0,255), (0,255,0), img)
-#         elif "black" in colors_to_keep:
-#             colorSwapper((0,0,0), (0,255,0), img)
-#         colors_to_roll.remove("green")
-#         if len(colors_to_roll) == 0:
-#             return
-#     if "yellow" in colors_to_roll:
-#         if "white" in colors_to_keep:
-#             colorSwapper((255,255,255), (255,255,0), img)
-#         elif "green" in colors_to_keep:
-#             colorSwapper((0,255,0), (255,255,0), img)  
-#         elif "red" in colors_to_keep:
-#             colorSwapper((255,0,0), (255,255,0), img)        
-#         elif "cyan" in colors_to_keep:
-#             colorSwapper((0,255,255), (255,255,0), img)
-#         colors_to_roll.remove("yellow")
-#         if len(colors_to_roll) == 0:
-#             return
-#     if "black" in colors_to_roll:
-#         if "blue" in colors_to_keep:
-#             colorSwapper((0,0,255), (0,0,0), img)
-#         elif "red" in colors_to_keep:
-#             colorSwapper((255,0,0), (0,0,0), img)  
-#         elif "green" in colors_to_keep:
-#             colorSwapper((0,0,255), (0,0,0), img)        
-#         elif "magenta" in colors_to_keep:
-#             colorSwapper((255,0,255), (0,0,0), img)
-#         colors_to_roll.remove("black")
-#         if len(colors_to_roll) == 0:
-#             return
-#     if "white" in colors_to_roll:
-#         if "yellow" in colors_to_keep:
-#             colorSwapper((255,255,0), (255,255,255), img)
-#         elif "cyan" in colors_to_keep:
-#             colorSwapper((0,255,255), (255,255,255), img)  
-#         elif "magenta" in colors_to_keep:
-#             colorSwapper((255,0,255), (255,255,255), img)        
-#         elif "green" in colors_to_keep:
-#             colorSwapper((0,255,0), (255,255,255), img)
-#         colors_to_roll.remove("white")
-#         if len(colors_to_roll) == 0:
-#             return
-
-
-# def colorSwapper(color_to_keep, color_to_roll, img):
-#     for y in range(img.size[1]):
-#         for x in range(img.size[0]):
-#             pixelMap = img.load()
-#             if pixelMap[x,y] == color_to_roll:
-#                 pixelMap[x,y] = color_to_keep
-
 
 # def z80Exporter(newimg):
 #     global palette

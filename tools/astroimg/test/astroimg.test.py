@@ -6,10 +6,10 @@ import unittest
 
 class TestPixel(unittest.TestCase):
 
-    def test_rgb2hsv(self):
-        mockcolor = astroimg.Pixel(252, 1, 0)
-        result = mockcolor.toHSV()
-        self.assertEqual(result, (0.238, 1.000, 0.988))
+    # def test_rgb2hsv(self):
+    #     mockcolor = astroimg.Pixel(252, 1, 0)
+    #     result = mockcolor._toHSV()
+    #     self.assertEqual(result, (0.238, 1.000, 0.988))
     
     def test_rgb2hex(self):
         mockcolor = astroimg.Pixel(1, 5, 250)
@@ -23,7 +23,7 @@ class TestPixel(unittest.TestCase):
     
     def test_rgb2eightcolor(self):
         mockcolor = astroimg.Pixel(245, 252, 5)
-        result = mockcolor.toEightColorRGB()
+        result = mockcolor._toEightColorRGB()
         self.assertEqual(result, (255, 255, 0))
 
 class TestImg(unittest.TestCase):
@@ -31,9 +31,12 @@ class TestImg(unittest.TestCase):
     def test_getcolorcountsandboundary(self):
         mockimage = astroimg.Img('test.png')
         mockimage.getColorCounts()
-        self.assertEqual(mockimage.colorcount['green'], 156 * 102)
+        self.assertEqual(mockimage.colorcount['white'], 4 * 102)
         mockimage.getColorBoundary()
-        self.assertEqual(mockimage.colorboundary, 4)
-
+        self.assertEqual(mockimage.colorboundary, 16)
+        mocknewimage = mockimage.splitAndRecombineImage()
+        self.assertEqual(mocknewimage.width, 160)
+        mocknewimage.show()
+        
 if __name__ == '__main__':
     unittest.main()
