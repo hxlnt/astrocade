@@ -90,6 +90,42 @@ class Pixel:
         else:
             return (0, 0, 0)
 
+    # def _stringToRGB(self, colorname):
+    #     """Sets the RGB value of a given pixel based on one of eight color names passed in."""
+    #     if colorname == 'red':
+    #         self.r = 255
+    #         self.g = 0
+    #         self.b = 0
+    #     elif colorname == 'magenta':
+    #         self.r = 255
+    #         self.g = 0
+    #         self.b = 255
+    #     elif colorname == 'blue':
+    #         self.r = 0
+    #         self.g = 0
+    #         self.b = 255
+    #     elif colorname == 'cyan':
+    #         self.r = 0
+    #         self.g = 255
+    #         self.b = 255
+    #     elif colorname == 'green':
+    #         self.r = 0
+    #         self.g = 255
+    #         self.b = 0
+    #     elif colorname == 'yellow':
+    #         self.r = 255
+    #         self.g = 255
+    #         self.b = 0
+    #     elif colorname == 'black':
+    #         self.r = 0
+    #         self.g = 0
+    #         self.b = 0
+    #     else:
+    #         self.r = 255
+    #         self.g = 255
+    #         self.b = 255
+
+            
 class Img:
     
     def __init__(self, imgpath, ditherWanted=False):
@@ -107,7 +143,8 @@ class Img:
             self.pixelMap = None
             self.width = None
             self.height = None
-        self.colorcount = {}
+        self.red = {"count": 0, "xpos": set(), "value": (255, 0, 0)}
+        self.
         self.colorboundary = 0
         self.redxpos = set()
         self.yellowxpos = set()
@@ -117,55 +154,64 @@ class Img:
         self.magentaxpos = set()
         self.blackxpos = set()
         self.whitexpos = set()
-    
-    def _getColorCounts(self):
-        red = yellow = green = cyan = blue = magenta = black = white = 0
+
+    def getColorCounts(self):
+        redcount = yellowcount = greencount = cyancount = bluecount = magentacount = blackcount = whitecount = 0
+        red = (255, 0, 0)
+        yellow = (255, 255, 0)
+        green = (0, 255, 0)
+        cyan = (0, 255, 255)
+        blue = (0, 0, 255)
+        magenta = (255, 0, 255)
+        black = (0, 0, 0)
+        white = (255, 255, 255)
         for y in range(self.height):
             for x in range(self.width):
                 thiscolor = Pixel(self.pixelMap[x,y][0], self.pixelMap[x,y][1], self.pixelMap[x,y][2])._toEightColorRGB()
                 self.pixelMap[x,y] = thiscolor
-                if thiscolor == (255,0,0):
-                    red += 1
-                    self.redxpos.add(x)
+                if thiscolor == ColorStatistics().red["value"]:
+                    ColorStatistics().red["count"] += 1
+                    ColorStatistics().red["xpos"].add(x)
                 elif thiscolor == (255,255,0):
-                    yellow += 1
+                    yellowcount += 1
                     self.yellowxpos.add(x)
                 elif thiscolor == (0,255,0):
-                    green+= 1
+                    greencount += 1
                     self.greenxpos.add(x)
                 elif thiscolor == (0,255,255):
-                    cyan += 1
+                    cyancount += 1
                     self.cyanxpos.add(x)
                 elif thiscolor == (0,0,255):
-                    blue += 1
+                    bluecount += 1
                     self.bluexpos.add(x)
                 elif thiscolor == (255,0,255):
-                    magenta += 1
+                    magentacount += 1
                     self.magentaxpos.add(x)
                 elif thiscolor == (0,0,0):
-                    black += 1
+                    blackcount += 1
                     self.blackxpos.add(x)
                 else:
-                    white += 1
+                    whitecount += 1
                     self.whitexpos.add(x)
         self.colorcount.update({
-            'red': red,
-            'yellow': yellow,
-            'green': green,
-            'cyan': cyan,
-            'blue': blue,
-            'magenta': magenta,
-            'black': black,
-            'white': white
+            'red': redcount,
+            'yellow': yellowcount,
+            'green': greencount,
+            'cyan': cyancount,
+            'blue': bluecount,
+            'magenta': magentacount,
+            'black': blackcount,
+            'white': whitecount
             })
 
     def getColorBoundary(self):
         """Finds a natural spot to split the image based on color distribution and updates the given image object's color boundary.
         """
         minmax = []
-        if len(self.redxpos) > 0 and self.colorcount['red'] > 160:
-            minmax.append(min(self.redxpos))
-            minmax.append(max(self.redxpos))
+        #if len(self.redxpos) > 0 and self.colorcount['red'] > 160:
+        if len(ColorStatistics().red["xpos"]) > 0 and ColorStatistics().red["count"] > 160:
+            minmax.append(min(ColorStatistics().red["xpos"]))
+            minmax.append(max(ColorStatistics().red["xpos"]))
         if len(self.magentaxpos) > 0 and self.colorcount['magenta'] > 160:
             minmax.append(min(self.magentaxpos))
             minmax.append(max(self.magentaxpos))
@@ -198,7 +244,7 @@ class Img:
         imgleft.pixelMap = imgleft.img.load()
         imgleft.width = imgleft.img.size[0]
         imgleft.height = imgleft.img.size[1]
-        imgleft._getColorCounts()
+        imgleft.getColorCounts()
         leftColorsSorted = sorted(iter(imgleft.colorcount.items()), key=lambda k_v: (k_v[1], k_v[0]))
         colorsToRoll = [leftColorsSorted[0][0], leftColorsSorted[1][0], leftColorsSorted[2][0], leftColorsSorted[3][0]]
         colorsToKeep = [leftColorsSorted[4][0], leftColorsSorted[5][0], leftColorsSorted[6][0], leftColorsSorted[7][0]]
@@ -208,7 +254,7 @@ class Img:
         imgright.pixelMap = imgright.img.load()
         imgright.width = imgright.img.size[0]
         imgright.height = imgright.img.size[1]
-        imgright._getColorCounts()
+        imgright.getColorCounts()
         rightColorsSorted = sorted(iter(imgright.colorcount.items()), key=lambda k_v: (k_v[1], k_v[0]))
         colorsToRoll = [rightColorsSorted[0][0], rightColorsSorted[1][0], rightColorsSorted[2][0], rightColorsSorted[3][0]]
         colorsToKeep = [rightColorsSorted[4][0], rightColorsSorted[5][0], rightColorsSorted[6][0], rightColorsSorted[7][0]]
@@ -314,7 +360,6 @@ class Img:
                 if self.pixelMap[x,y] == color_to_roll:
                     self.pixelMap[x,y] = color_to_keep
 
-
 ## Get user input
 ## Instantiate image object
 ## Get color counts
@@ -324,7 +369,7 @@ class Img:
 
 #################################################################
 
-# palette = blackxpos = bluexpos = cyanxpos = greenxpos = magentaxpos = redxpos = whitexpos = yellowxpos = {} 
+# palette = {}
 # palette = set()
 
 # def z80Exporter(newimg):
@@ -450,7 +495,7 @@ class Img:
 # """
 #     asmColorBoundary = "            DB      " + str(adjustedmedian) + "/4            ; ... with color boundary set to this value/4"
 #     asmGameLoop = """
-#             DB      00001000b       ; ... with screen interrupts reenabled 
+#             DB      00001000b       ; ... with screen interrupts reenabled
 #             DO      COLSET          ; Set color palettes
 #             DW      Palettes        ; ... with the values at Palettes
 #             DO      MOVE            ; Display graphic
@@ -465,7 +510,7 @@ class Img:
 #     asmRightPalette = "\n            DB      " + paletteRightString + " ; Right color palette (11b, 10b, 01b, 00b)"
 #     asmGraphics = "\nGraphics:                           ; Graphics"
 #     asmGraphicsInclude = '\n            INCLUDE "' + graphicsFilename + '"\n'
-#     asmAll = asmTitle + asmHeader + asmPrgName + asmPrgStart + asmColorBoundary + asmGameLoop + asmLeftPalette + asmRightPalette + asmGraphics + asmGraphicsInclude 
+#     asmAll = asmTitle + asmHeader + asmPrgName + asmPrgStart + asmColorBoundary + asmGameLoop + asmLeftPalette + asmRightPalette + asmGraphics + asmGraphicsInclude
 #     newFile2 = open(asmFilename, "w")
 #     newFile2.write(asmAll)
 #     newFile2.close()

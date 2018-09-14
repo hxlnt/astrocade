@@ -25,10 +25,10 @@ class TestImg(unittest.TestCase):
 
     def test_getcolorcountsandboundary(self):
         mockimage = astroimg.Img('test.png')
-        mockimage._getColorCounts()
+        mockimage.getColorCounts()
         self.assertEqual(mockimage.colorcount['white'], 4 * 102)
         mockimage.getColorBoundary()
-        self.assertEqual(mockimage.colorboundary, 16)
+        self.assertEqual(mockimage.colorboundary, 4)
     
     def test_splitandrecombineimage(self):
         mockimage = astroimg.Img('test.png').splitAndRecombineImage()
