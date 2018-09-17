@@ -89,43 +89,7 @@ class Pixel:
             return (255, 255, 255)
         else:
             return (0, 0, 0)
-
-    # def _stringToRGB(self, colorname):
-    #     """Sets the RGB value of a given pixel based on one of eight color names passed in."""
-    #     if colorname == 'red':
-    #         self.r = 255
-    #         self.g = 0
-    #         self.b = 0
-    #     elif colorname == 'magenta':
-    #         self.r = 255
-    #         self.g = 0
-    #         self.b = 255
-    #     elif colorname == 'blue':
-    #         self.r = 0
-    #         self.g = 0
-    #         self.b = 255
-    #     elif colorname == 'cyan':
-    #         self.r = 0
-    #         self.g = 255
-    #         self.b = 255
-    #     elif colorname == 'green':
-    #         self.r = 0
-    #         self.g = 255
-    #         self.b = 0
-    #     elif colorname == 'yellow':
-    #         self.r = 255
-    #         self.g = 255
-    #         self.b = 0
-    #     elif colorname == 'black':
-    #         self.r = 0
-    #         self.g = 0
-    #         self.b = 0
-    #     else:
-    #         self.r = 255
-    #         self.g = 255
-    #         self.b = 255
-
-            
+   
 class Img:
     
     def __init__(self, imgpath, ditherWanted=False):
@@ -143,96 +107,36 @@ class Img:
             self.pixelMap = None
             self.width = None
             self.height = None
-        self.red = {"count": 0, "xpos": set(), "value": (255, 0, 0)}
-        self.
+        self.colorstats = {
+            "red": {"count": 0, "xpos": set(), "value": (255, 0, 0)},
+            "yellow": {"count": 0, "xpos": set(), "value": (255, 255, 0)},
+            "green": {"count": 0, "xpos": set(), "value": (0, 255, 0)},
+            "cyan": {"count": 0, "xpos": set(), "value": (0, 255, 255)},
+            "blue": {"count": 0, "xpos": set(), "value": (0, 0, 255)},
+            "magenta": {"count": 0, "xpos": set(), "value": (255, 0, 255)},
+            "black": {"count": 0, "xpos": set(), "value": (0, 0, 0)},
+            "white": {"count": 0, "xpos": set(), "value": (255, 255, 255)}
+        }
         self.colorboundary = 0
-        self.redxpos = set()
-        self.yellowxpos = set()
-        self.greenxpos = set()
-        self.cyanxpos = set()
-        self.bluexpos = set()
-        self.magentaxpos = set()
-        self.blackxpos = set()
-        self.whitexpos = set()
 
     def getColorCounts(self):
-        redcount = yellowcount = greencount = cyancount = bluecount = magentacount = blackcount = whitecount = 0
-        red = (255, 0, 0)
-        yellow = (255, 255, 0)
-        green = (0, 255, 0)
-        cyan = (0, 255, 255)
-        blue = (0, 0, 255)
-        magenta = (255, 0, 255)
-        black = (0, 0, 0)
-        white = (255, 255, 255)
         for y in range(self.height):
             for x in range(self.width):
                 thiscolor = Pixel(self.pixelMap[x,y][0], self.pixelMap[x,y][1], self.pixelMap[x,y][2])._toEightColorRGB()
                 self.pixelMap[x,y] = thiscolor
-                if thiscolor == ColorStatistics().red["value"]:
-                    ColorStatistics().red["count"] += 1
-                    ColorStatistics().red["xpos"].add(x)
-                elif thiscolor == (255,255,0):
-                    yellowcount += 1
-                    self.yellowxpos.add(x)
-                elif thiscolor == (0,255,0):
-                    greencount += 1
-                    self.greenxpos.add(x)
-                elif thiscolor == (0,255,255):
-                    cyancount += 1
-                    self.cyanxpos.add(x)
-                elif thiscolor == (0,0,255):
-                    bluecount += 1
-                    self.bluexpos.add(x)
-                elif thiscolor == (255,0,255):
-                    magentacount += 1
-                    self.magentaxpos.add(x)
-                elif thiscolor == (0,0,0):
-                    blackcount += 1
-                    self.blackxpos.add(x)
-                else:
-                    whitecount += 1
-                    self.whitexpos.add(x)
-        self.colorcount.update({
-            'red': redcount,
-            'yellow': yellowcount,
-            'green': greencount,
-            'cyan': cyancount,
-            'blue': bluecount,
-            'magenta': magentacount,
-            'black': blackcount,
-            'white': whitecount
-            })
+                for color in self.colorstats:
+                    if thiscolor == self.colorstats[color]['value']:
+                        self.colorstats[color]['count'] += 1
+                        self.colorstats[color]['xpos'].add(x)
 
     def getColorBoundary(self):
         """Finds a natural spot to split the image based on color distribution and updates the given image object's color boundary.
         """
         minmax = []
-        #if len(self.redxpos) > 0 and self.colorcount['red'] > 160:
-        if len(ColorStatistics().red["xpos"]) > 0 and ColorStatistics().red["count"] > 160:
-            minmax.append(min(ColorStatistics().red["xpos"]))
-            minmax.append(max(ColorStatistics().red["xpos"]))
-        if len(self.magentaxpos) > 0 and self.colorcount['magenta'] > 160:
-            minmax.append(min(self.magentaxpos))
-            minmax.append(max(self.magentaxpos))
-        if len(self.bluexpos) > 0 and self.colorcount['blue'] > 160:
-            minmax.append(min(self.bluexpos))
-            minmax.append(max(self.bluexpos))
-        if len(self.cyanxpos) > 0 and self.colorcount['cyan'] > 160:
-            minmax.append(min(self.cyanxpos))
-            minmax.append(max(self.cyanxpos))
-        if len(self.greenxpos) > 0 and self.colorcount['green'] > 160:
-            minmax.append(min(self.greenxpos))
-            minmax.append(max(self.greenxpos))
-        if len(self.yellowxpos) > 0 and self.colorcount['yellow'] > 160:
-            minmax.append(min(self.yellowxpos))
-            minmax.append(max(self.yellowxpos))
-        if len(self.blackxpos) > 0 and self.colorcount['black'] > 160:
-            minmax.append(min(self.blackxpos))
-            minmax.append(max(self.blackxpos))
-        if len(self.whitexpos) > 0 and self.colorcount['white'] > 160:
-            minmax.append(min(self.whitexpos))
-            minmax.append(max(self.whitexpos))
+        for color in self.colorstats:
+            if len(self.colorstats[color]['xpos']) > 0 and self.colorstats[color]['count'] > 160:
+                minmax.append(min(self.colorstats[color]['xpos']))
+                minmax.append(max(self.colorstats[color]['xpos']))
         median = round(statistics.median(minmax))
         self.colorboundary = int(math.floor(median - (median % 4)))
 
@@ -245,7 +149,10 @@ class Img:
         imgleft.width = imgleft.img.size[0]
         imgleft.height = imgleft.img.size[1]
         imgleft.getColorCounts()
-        leftColorsSorted = sorted(iter(imgleft.colorcount.items()), key=lambda k_v: (k_v[1], k_v[0]))
+        leftColorsSorted = []
+        for color in self.colorstats:
+            leftColorsSorted.append((self.colorstats[color]['count'], color))
+        leftColorsSorted.sort(reverse=True)
         colorsToRoll = [leftColorsSorted[0][0], leftColorsSorted[1][0], leftColorsSorted[2][0], leftColorsSorted[3][0]]
         colorsToKeep = [leftColorsSorted[4][0], leftColorsSorted[5][0], leftColorsSorted[6][0], leftColorsSorted[7][0]]
         imgleft._colorRoller(colorsToKeep, colorsToRoll)
@@ -255,7 +162,10 @@ class Img:
         imgright.width = imgright.img.size[0]
         imgright.height = imgright.img.size[1]
         imgright.getColorCounts()
-        rightColorsSorted = sorted(iter(imgright.colorcount.items()), key=lambda k_v: (k_v[1], k_v[0]))
+        rightColorsSorted = []
+        for color in self.colorstats:
+            rightColorsSorted.append((self.colorstats[color]['count'], color))
+        rightColorsSorted.sort(reverse=True)
         colorsToRoll = [rightColorsSorted[0][0], rightColorsSorted[1][0], rightColorsSorted[2][0], rightColorsSorted[3][0]]
         colorsToKeep = [rightColorsSorted[4][0], rightColorsSorted[5][0], rightColorsSorted[6][0], rightColorsSorted[7][0]]
         imgright._colorRoller(colorsToKeep, colorsToRoll)
