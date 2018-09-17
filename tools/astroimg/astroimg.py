@@ -308,13 +308,6 @@ def stringToHex(colorname):
         return 0x07
 
 
-## Get user input
-## Instantiate image object
-## Get color counts
-## Get color boundary
-## Split image into halves and recombine to new image
-
-
 #################################################################
 
 # palette = {}
@@ -325,15 +318,6 @@ def stringToHex(colorname):
 #     pixelMap = newimg.load()
 #     currentbyte = 0x00
 #     export = []
-#     palette = [leftcolors[4][0], leftcolors[5][0], leftcolors[6][0], leftcolors[7][0], rightcolors[4][0], rightcolors[5][0], rightcolors[6][0], rightcolors[7][0]]
-#     palette = [pal.replace('red', '(255, 0, 0)') for pal in palette]
-#     palette = [pal.replace('magenta', '(255, 0, 255)') for pal in palette]
-#     palette = [pal.replace('blue', '(0, 0, 255)') for pal in palette]
-#     palette = [pal.replace('cyan', '(0, 255, 255)') for pal in palette]
-#     palette = [pal.replace('green', '(0, 255, 0)') for pal in palette]
-#     palette = [pal.replace('yellow', '(255, 255, 0)') for pal in palette]
-#     palette = [pal.replace('black', '(0, 0, 0)') for pal in palette]
-#     palette = [pal.replace('white', '(255, 255, 255)') for pal in palette]
 #     for y in range(img.size[1]):
 #         #for x in range(img.size[0]/4):
 #         x=0
@@ -407,17 +391,7 @@ def stringToHex(colorname):
 #     newFile.write(z80)
 #     newFile.close()
 
-
 # def asmExporter():
-#     global palette
-#     palette = [pal.replace('(255, 0, 0)', '$6C') for pal in palette]
-#     palette = [pal.replace('(255, 0, 255)', '$2F') for pal in palette]
-#     palette = [pal.replace('(0, 0, 255)', '$EC') for pal in palette]
-#     palette = [pal.replace('(0, 255, 255)', '$D5') for pal in palette]
-#     palette = [pal.replace('(0, 255, 0)', '$AE') for pal in palette]
-#     palette = [pal.replace('(255, 255, 0)', '$77') for pal in palette]
-#     palette = [pal.replace('(255, 255, 255)', '$07') for pal in palette]
-#     palette = [pal.replace('(0, 0, 0)', '$00') for pal in palette]
 #     paletteLeftString = palette[3] + "," + palette[2] + "," + palette[1] + "," + palette[0]
 #     paletteRightString = palette[7] + "," + palette[6] + "," + palette[5] + "," + palette[4]
 #     asmTitle = "                                    ; " + filename
@@ -486,32 +460,10 @@ def stringToHex(colorname):
 #         img = img.convert("P", dither=Image.FLOYDSTEINBERG)
 #     else:
 #         print("Unknown argument ignored. Use --dither to dither image.\n")
-# #img.show()
-# img = img.convert("RGB")
-# filename = os.path.basename(sys.argv[1])
-# filename = os.path.splitext(filename)[0].upper()
-# if len(filename) > 8:
-#     filename = filename[:7]
+
 # print("Building Z80 ASM for " + filename + "...\n")
 # graphicsFilename = filename + ".gfx"
 # asmFilename = filename + ".asm"
-# eightColorDownsample(img)
-# colorBoundaryFinder(img)
-# colorCounter(imgleft)
-# leftcolors = {"red":redcounter, "yellow":yellowcounter, "green":greencounter, "cyan":cyancounter, "blue":bluecounter, "magenta":magentacounter, "black":blackcounter, "white":whitecounter}
-# leftcolors = sorted(iter(leftcolors.items()), key=lambda k_v: (k_v[1],k_v[0]))
-# colors_to_roll = [leftcolors[0][0], leftcolors[1][0], leftcolors[2][0], leftcolors[3][0]]
-# colors_to_keep = [leftcolors[4][0], leftcolors[5][0], leftcolors[6][0], leftcolors[7][0]]
-# colorRoller(colors_to_keep, colors_to_roll, imgleft)
-# colorCounter(imgright)
-# rightcolors = {"red":redcounter, "yellow":yellowcounter, "green":greencounter, "cyan":cyancounter, "blue":bluecounter, "magenta":magentacounter, "black":blackcounter, "white":whitecounter}
-# rightcolors = sorted(iter(rightcolors.items()), key=lambda k_v: (k_v[1],k_v[0]))
-# colors_to_roll = [rightcolors[0][0], rightcolors[1][0], rightcolors[2][0], rightcolors[3][0]]
-# colors_to_keep = [rightcolors[4][0], rightcolors[5][0], rightcolors[6][0], rightcolors[7][0]]
-# colorRoller(colors_to_keep, colors_to_roll, imgright)
-# newimg = Image.new("RGB", (160,102))
-# newimg.paste(imgleft, (0,0))
-# newimg.paste(imgright, (adjustedmedian, 0))
 # z80Exporter(newimg)
 # asmExporter()
 # imgPreview(newimg)
