@@ -32,6 +32,8 @@ class TestImg(unittest.TestCase):
         mockimage.splitAndRecombineImage()
         self.assertEqual(mockimage.width, 160)
         mockimage.img.show()
+        mockoutput = astroimg.Z80Output(mockimage)
+        self.assertEqual(mockoutput.filename, "TEST")
 
 if __name__ == '__main__':
     unittest.main()

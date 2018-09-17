@@ -118,6 +118,7 @@ class Img:
             "white": {"count": 0, "xpos": set(), "value": (255, 255, 255)}
         }
         self.colorboundary = 0
+        self.astropalette = []
 
     def getColorCounts(self):
         for y in range(self.height):
@@ -152,9 +153,9 @@ class Img:
         leftColorsSorted = []
         for color in self.colorstats:
             leftColorsSorted.append((self.colorstats[color]['count'], color))
-        leftColorsSorted.sort(reverse=True)
-        colorsToRoll = [leftColorsSorted[0][0], leftColorsSorted[1][0], leftColorsSorted[2][0], leftColorsSorted[3][0]]
-        colorsToKeep = [leftColorsSorted[4][0], leftColorsSorted[5][0], leftColorsSorted[6][0], leftColorsSorted[7][0]]
+        leftColorsSorted.sort()
+        colorsToRoll = [leftColorsSorted[0][1], leftColorsSorted[1][1], leftColorsSorted[2][1], leftColorsSorted[3][1]]
+        colorsToKeep = [leftColorsSorted[4][1], leftColorsSorted[5][1], leftColorsSorted[6][1], leftColorsSorted[7][1]]
         imgleft._colorRoller(colorsToKeep, colorsToRoll)
         imgright = Img(None)
         imgright.img = self.img.crop((self.colorboundary, 0, 160, 102))
@@ -165,10 +166,12 @@ class Img:
         rightColorsSorted = []
         for color in self.colorstats:
             rightColorsSorted.append((self.colorstats[color]['count'], color))
-        rightColorsSorted.sort(reverse=True)
-        colorsToRoll = [rightColorsSorted[0][0], rightColorsSorted[1][0], rightColorsSorted[2][0], rightColorsSorted[3][0]]
-        colorsToKeep = [rightColorsSorted[4][0], rightColorsSorted[5][0], rightColorsSorted[6][0], rightColorsSorted[7][0]]
+        rightColorsSorted.sort()
+        colorsToRoll = [rightColorsSorted[3][1], rightColorsSorted[2][1], rightColorsSorted[1][1], rightColorsSorted[0][1]]
+        colorsToKeep = [rightColorsSorted[7][1], rightColorsSorted[6][1], rightColorsSorted[5][1], rightColorsSorted[4][1]]
         imgright._colorRoller(colorsToKeep, colorsToRoll)
+        self.astropalette = (stringToHex(leftColorsSorted[7][1]), stringToHex(leftColorsSorted[6][1]), stringToHex(leftColorsSorted[5][1]), stringToHex(leftColorsSorted[4][1]), stringToHex(rightColorsSorted[7][1]), stringToHex(rightColorsSorted[6][1]), stringToHex(rightColorsSorted[5][1]), stringToHex(rightColorsSorted[4][1]))
+        print(self.astropalette)
         newimg = Image.new("RGB", (160,102))
         newimg.paste(imgleft.img, (0,0))
         newimg.paste(imgright.img, (self.colorboundary, 0))
@@ -269,6 +272,41 @@ class Img:
             for x in range(self.width):
                 if self.pixelMap[x,y] == color_to_roll:
                     self.pixelMap[x,y] = color_to_keep
+
+
+class Z80Output:
+
+    def __init__(self, img):
+        self.palette = img.astropalette
+        self.filename = os.path.splitext(img.imgpath)[0].upper()
+        if len(self.filename) > 8:
+            self.filename = self.filename[:7]
+
+    def asmExporter(self):
+        pass
+    
+    def gfxExporter(self):
+        pass
+
+
+def stringToHex(colorname):
+    if colorname == 'red':
+        return 0x6C
+    elif colorname == 'magenta':
+        return 0x2F
+    elif colorname == 'blue':
+        return 0xEC
+    elif colorname == 'cyan':
+        return 0xD5
+    elif colorname == 'green':
+        return 0xAE
+    elif colorname == 'yellow':
+        return 0x77
+    elif colorname == 'black':
+        return 0x00
+    else: 
+        return 0x07
+
 
 ## Get user input
 ## Instantiate image object
