@@ -17,13 +17,16 @@ The `demos` folder contains my latest Astrocade demos. Compiling them from sourc
  - `01-helloworlds` is baby's first Astrocade homebrew, simply displaying text that reads, "HELLO, WORLDS!"
  - `02-telephone` is an audio demo of a telephone ringing that also features background graphics.
  - `03-horcbpal` dynamically changes the *hor*izontal *c*olor *b*oundary (HORCB) based on the position of the player 1 controller knob.
-I'll continue to update these as often as I can.
+
+I'll continue to add more demos as often as I can.
 
 ## Tools
 The `tools` folder contains some development tools I've created; feel free to use them as well!
  - Astroimg is a Python command-line tool that converts images to Z80 assembly. It automatically handles resizing and color downsampling. Usage: `python astroimg.py path/to/img.png [option: --dither]`. For more information, check [the Astroimg README](https://github.com/hxlnt/astrocade/tree/master/tools/astroimg).
+
  ![astroimg demo](https://hxlntblob.blob.core.windows.net/nbm/astroimgtest.jpg)
  - Astropaint is a browser-based tool I created for drawing original Astrocade background graphics. It's probably easiest to just use it online [here](https://rawgit.com/hxlnt/astrocade/master/tools/astropaint/index.html). You'll be able to draw a screen like this one, which conforms to the graphic limitations of the Astrocade, then export the drawing as Z80 assembly. There are some optimizations that would make this run much faster, so if you're the fixin' type, I'll happily review your pull request!
+ 
  ![Screenshot of Astrocade](etc/paint900.jpeg)
  - Compiling and launching your code requires several sequential command-line processes. It's only four or five lines, but you won't want to type them again and again--and risk making errors--every time you want to test a new bit of code. So, I wrote this [compileAndLaunch.bat script](https://github.com/hxlnt/astrocade-dev/blob/master/tools/compileAndLaunch.bat). To assemble your code and launch the resulting ROM in MAME, simply place the script alongside your source code, edit a line in the script to point to your MAME installation, save the script, then run `compileAndLaunch.bat mycode` where `mycode` is the name of your .asm file **without the file extension.**
 
