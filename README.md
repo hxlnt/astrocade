@@ -1,4 +1,4 @@
-# 🍄 ASTROCADE DEV 🍄
+# 🌠 ASTROCADE DEV 🌠
 
 Hello! Let's make cute software for the Bally Astrocade!
 
