@@ -13,7 +13,7 @@ The Bally Astrocade is a slightly obscure 8-bit home computer released in the la
 ![Sketch depicting Bally Astrocade](etc/bally.png)
 
 ## Demos
-The `demos` folder contains my latest Astrocade demos. Compiling them from source requires `HVGLIB.H` and the Zmac assembler. (See [Development tools](#development-tools) for more information.)
+The `demos` folder contains my latest Astrocade demos. Compiling them from source requires `HVGLIB.H` and the Zmac assembler. (See [External resources](#external-resources).)
  - `01-helloworlds` is baby's first Astrocade homebrew, simply displaying text that reads, "HELLO, WORLDS!"
  - `02-telephone` is an audio demo of a telephone ringing that also features background graphics.
  - `03-horcbpal` dynamically changes the *hor*izontal *c*olor *b*oundary (HORCB) based on the position of the player 1 controller knob.
