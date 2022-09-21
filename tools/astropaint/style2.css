@@ -1,0 +1,66 @@
+:root {
+    --columns: 160;
+    --rows: 102;
+    --pixelSize: 4px;
+
+  }
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), var(--pixelSize));
+  grid-template-rows: repeat(var(--rows), var(--pixelSize));
+  gap: 0px 0px;
+  
+}
+
+.metacol {
+    display: grid;
+    grid-template: 1fr / repeat(4, var(--pixelSize));
+}
+.metacol-1 { grid-column: 1 / 5; }
+.metacol-2 { grid-column: 5 / 9; }
+.metacol-3 { grid-column: 9 / 13;}
+.metacol-4 { grid-column: 13 / 17;}
+.metacol-5 { grid-column: 17 / 21;}
+.metacol-6 { grid-column: 21 / 25;}
+.metacol-7 { grid-column: 25 / 29;}
+.metacol-8 { grid-column: 29 / 33;}
+.metacol-9 { grid-column: 33 / 37;}
+.metacol-10 { grid-column: 37 / 41;}
+.metacol-11 { grid-column: 41 / 45;}
+.metacol-12 { grid-column: 45 / 49;}
+.metacol-13 { grid-column: 49 / 53;}
+.metacol-14 { grid-column: 53 / 57;}
+.metacol-15 { grid-column: 57 / 61;}
+.metacol-16 { grid-column: 61 / 65;}
+.metacol-17 { grid-column: 65 / 69;}
+.metacol-18 { grid-column: 69 / 73;}
+.metacol-19 { grid-column: 73 / 77;}
+.metacol-20 { grid-column: 77 / 81;}
+.metacol-21 { grid-column: 81 / 85;}
+.metacol-22 { grid-column: 85 / 89;}
+.metacol-23 { grid-column: 89 / 93;}
+.metacol-24 { grid-column: 93 / 97;}
+.metacol-25 { grid-column: 97 / 101;}
+.metacol-26 { grid-column: 101 / 105;}
+.metacol-27 { grid-column: 105 / 109;}
+.metacol-28 { grid-column: 109 / 113;}
+.metacol-29 { grid-column: 113 / 117;}
+.metacol-30 { grid-column: 117 / 121;}
+.metacol-31 { grid-column: 121 / 125;}
+.metacol-32 { grid-column: 125 / 129;}
+.metacol-33 { grid-column: 129 / 133;}
+.metacol-34 { grid-column: 133 / 137;}
+.metacol-35 { grid-column: 137 / 141;}
+.metacol-36 { grid-column: 141 / 145;}
+.metacol-37 { grid-column: 145 / 149;}
+.metacol-38 { grid-column: 149 / 153;}
+.metacol-39 { grid-column: 153 / 157;}
+.metacol-40 { grid-column: 157 / 161;}
+
+.subitem {
+    border-right: 1px solid rgb(60,60,60);
+    border-bottom: 1px solid rgb(60,60,60);
+    height: var(--pixelSize);
+    width: var(--pixelSize);
+}
